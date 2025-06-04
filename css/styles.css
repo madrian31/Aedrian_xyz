@@ -43,11 +43,33 @@
   .name {
     text-align: center;
     margin-top: 70px; /* adjusted depending on profile-pic position */
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     font-weight: bold;
     color: #333;
+    transition: 1s ease-in-out;
   }
   
+  .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .social-media a {
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    color: #333; /* solid color */
+    text-decoration: none;
+    transition: 1s ease-in-out;
+  }
+  
+  .social-media a:hover {
+    color: #007bff; /* change color on hover (blue) */
+    transform: scale(1.2);
+    transition: 1s ease-in-out;
+  }
+  
+
   /* Tablet view (min-width: 600px) */
   @media (min-width: 600px) {
     .header {
@@ -62,7 +84,6 @@
 
     .name {
         margin-top: 90px;
-        font-size: 1.4rem;
       }
 
   }
@@ -82,7 +103,6 @@
 
     .name {
         margin-top: 130px;
-        font-size: 1.8rem;
       }
   }
   
