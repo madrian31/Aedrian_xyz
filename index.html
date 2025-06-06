@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marc Adrian Bernales</title>
+  <meta name="description" content="Personal portfolio of Marc Adrian Bernales, UI/UX Designer and Junior Programmer">
+  <title>Marc Adrian Bernales - Portfolio</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/timeline.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     
     <nav class="main-nav">
     <div class="nav-container">
       <div class="nav-brand-container">
-        <img src="https://scontent.fmnl36-1.fna.fbcdn.net/v/t39.30808-1/479191544_3856854894556361_7060018834841791012_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHNqLhtxfPi4OilEO5dBn9TLT9zP4yuHpotP3M_jK4emv96wz0bhgb9IslKfBWsX_C8HuRwg88-UEmRZPktY4uP&_nc_ohc=yO-cfyDOE-YQ7kNvwGIQyRG&_nc_oc=AdlAHiqtftt7I998F1Hu3_jOzh8cOIrJtuKneGciTleahoQAndgie_4I5RLXHOGVRJ4&_nc_zt=24&_nc_ht=scontent.fmnl36-1.fna&_nc_gid=_LIq5abWP95Jw6cVazFq7g&oh=00_AfJkwJRtEdEYAhM_TEZZ3eJb8nl8nxN4tVPC-enblWDKgQ&oe=6845F444" class="nav-profile-pic" id="navProfilePic">
+        <img src="https://scontent.fmnl36-1.fna.fbcdn.net/v/t39.30808-1/479191544_3856854894556361_7060018834841791012_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHNqLhtxfPi4OilEO5dBn9TLT9zP4yuHpotP3M_jK4emv96wz0bhgb9IslKfBWsX_C8HuRwg88-UEmRZPktY4uP&_nc_ohc=yO-cfyDOE-YQ7kNvwGIQyRG&_nc_oc=AdlAHiqtftt7I998F1Hu3_jOzh8cOIrJtuKneGciTleahoQAndgie_4I5RLXHOGVRJ4&_nc_zt=24&_nc_ht=scontent.fmnl36-1.fna&_nc_gid=_LIq5abWP95Jw6cVazFq7g&oh=00_AfJkwJRtEdEYAhM_TEZZ3eJb8nl8nxN4tVPC-enblWDKgQ&oe=6845F444" 
+             alt="Profile Picture" 
+             class="nav-profile-pic" 
+             id="navProfilePic">
         <div class="nav-brand">MA</div>
       </div>
       <div class="nav-links">
         <a href="#home" class="nav-link active">Home</a>
         <a href="#about" class="nav-link">About</a>
+        <a href="#timeline" class="nav-link">Journey</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
-      <button class="nav-toggle" id="navToggle">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
@@ -29,41 +37,87 @@
     </div>
   </nav>
 
-  <div class="header">
-    <img src="https://scontent.fmnl36-1.fna.fbcdn.net/v/t39.30808-1/479191544_3856854894556361_7060018834841791012_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHNqLhtxfPi4OilEO5dBn9TLT9zP4yuHpotP3M_jK4emv96wz0bhgb9IslKfBWsX_C8HuRwg88-UEmRZPktY4uP&_nc_ohc=yO-cfyDOE-YQ7kNvwGIQyRG&_nc_oc=AdlAHiqtftt7I998F1Hu3_jOzh8cOIrJtuKneGciTleahoQAndgie_4I5RLXHOGVRJ4&_nc_zt=24&_nc_ht=scontent.fmnl36-1.fna&_nc_gid=_LIq5abWP95Jw6cVazFq7g&oh=00_AfJkwJRtEdEYAhM_TEZZ3eJb8nl8nxN4tVPC-enblWDKgQ&oe=6845F444" class="profile-pic">
-  </div>
+  <main>
+    <section id="home" class="header">
+      <img src="https://scontent.fmnl36-1.fna.fbcdn.net/v/t39.30808-1/479191544_3856854894556361_7060018834841791012_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHNqLhtxfPi4OilEO5dBn9TLT9zP4yuHpotP3M_jK4emv96wz0bhgb9IslKfBWsX_C8HuRwg88-UEmRZPktY4uP&_nc_ohc=yO-cfyDOE-YQ7kNvwGIQyRG&_nc_oc=AdlAHiqtftt7I998F1Hu3_jOzh8cOIrJtuKneGciTleahoQAndgie_4I5RLXHOGVRJ4&_nc_zt=24&_nc_ht=scontent.fmnl36-1.fna&_nc_gid=_LIq5abWP95Jw6cVazFq7g&oh=00_AfJkwJRtEdEYAhM_TEZZ3eJb8nl8nxN4tVPC-enblWDKgQ&oe=6845F444" 
+           alt="Profile Picture" 
+           class="profile-pic">
+    </section>
 
-  <div class="name">
-    Marc Adrian Bernales
-  </div>
+    <section class="intro-section">
+      <h1 class="name">Marc Adrian Bernales</h1>
+      <p class="title">UI/UX Designer & Junior Programmer</p>
+      
+      <div class="social-media">
+        <a href="#" class="bi bi-facebook" aria-label="Facebook"></a>
+        <a href="#" class="bi bi-twitter" aria-label="Twitter"></a>
+        <a href="#" class="bi bi-instagram" aria-label="Instagram"></a>
+        <a href="#" class="bi bi-linkedin" aria-label="LinkedIn"></a>
+        <a href="#" class="bi bi-github" aria-label="GitHub"></a>
+      </div>
+    </section>
+    
+    <section class="content-section" id="about">
+      <h2>About Me</h2>
+      <p>Hi, I'm Adrian Bernales — a UI/UX designer and junior programmer passionate about creating meaningful digital experiences. I enjoy building clean, user-interfaces and bringing ideas to life through code and design.</p>
+      <div class="skills-container">
+        <h3>My Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Design</h4>
+            <ul>
+              <li>UI/UX Design</li>
+              <li>Wireframing</li>
+              <li>Prototyping</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h4>Development</h4>
+            <ul>
+              <li>HTML/CSS</li>
+              <li>JavaScript</li>
+              <li>ASP.NET</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="timeline-section" id="timeline">
+      <h2>My Journey</h2>
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        <div id="timelineItems"></div>
+      </div>
+    </section>
+    
+    
+    
+    <section class="content-section" id="contact">
+      <h2>Get In Touch</h2>
+      <p>I'd love to hear from you! Whether you want to collaborate, have questions, or just want to say hello.</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+  </main>
 
-  <div class="social-media">
-    <a href="#" class="bi bi-facebook"></a>
-    <a href="#" class="bi bi-twitter"></a>
-    <a href="#" class="bi bi-instagram"></a>
-  </div>
-  
-  <!-- Timeline -->
-  <div class="timeline-section" id="timeline">
-    <h2>My Journey</h2>
-    <div class="timeline-container">
-      <div class="timeline-line"></div>
-      <div id="timelineItems"></div>
-    </div>
-  </div>
-  
-  <!-- Sample content sections to demonstrate scrolling -->
-  <div class="content-section" id="about">
-    <h2>About Me</h2>
-    <p>Hi, I’m Adrian Bernales — a UI/UX designer and junior programmer who’s passionate about creating meaningful digital experiences. I enjoy building clean, 
-      user-interfaces and bringing ideas to life through code and design.</p>
-  </div>
-  
-  <div class="content-section" id="contact">
-    <h2>Get In Touch</h2>
-    <p>I'd love to hear from you! Whether you want to collaborate, have questions, or just want to say hello.</p>
-    <p>Feel free to reach out through any of the social media links above, or simply scroll back up to see my profile again!</p>
-  </div>
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Marc Adrian Bernales. All rights reserved.</p>
+  </footer>
+
   <script src="js/script.js"></script>
   <script src="js/timeline.js"></script>
 </body>
