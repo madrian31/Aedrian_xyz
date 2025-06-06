@@ -1,12 +1,12 @@
 /* Timeline Styles */
 .timeline-section {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto;
   background: white;
   padding: 60px 24px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  overflow: visible; /* Ensure content isn't clipped */
+  overflow: hidden; /* Prevent overflow issues */
 }
 
 .timeline-section h2 {
@@ -21,7 +21,6 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 40px 0;
-  overflow: visible; /* Allow content to be visible */
 }
 
 .timeline-line {
@@ -42,7 +41,7 @@
   transform: translateY(50px);
   transition: all 0.6s ease;
   width: 100%;
-  min-height: 120px; /* Ensure proper height for absolute positioning */
+  min-height: 120px;
   display: flex;
   align-items: center;
 }
@@ -185,54 +184,76 @@
   white-space: nowrap;
 }
 
-/* Mobile Timeline */
+/* Mobile Timeline - FIXED */
 @media (max-width: 768px) {
+  .timeline-section {
+    padding: 40px 16px;
+    margin: 20px 10px; /* Add side margins */
+    overflow: hidden; /* Prevent horizontal overflow */
+  }
+
+  .timeline-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
   .timeline-container {
-    padding: 40px 20px; /* Add horizontal padding for mobile */
+    padding: 20px 0;
+    overflow: hidden; /* Prevent overflow */
   }
 
   .timeline-line {
-    left: 30px;
+    left: 25px; /* Move line closer to left */
+    transform: none; /* Remove center transform */
   }
 
   .timeline-item {
     margin: 30px 0;
     position: relative;
     width: 100%;
+    min-height: auto; /* Allow natural height */
+    display: block; /* Change from flex to block */
   }
 
+  /* Reset positioning for mobile - make all items left-aligned */
   .timeline-item:nth-child(odd) .timeline-content,
   .timeline-item:nth-child(even) .timeline-content {
     position: relative;
-    left: 70px;
+    left: 55px; /* Space from the timeline line */
     right: 0;
+    top: auto;
+    transform: none;
     text-align: left;
-    width: calc(100% - 90px);
+    width: calc(100% - 75px); /* Account for left spacing */
     max-width: none;
   }
 
+  /* Fix arrows for mobile */
   .timeline-item:nth-child(odd) .timeline-content::before,
   .timeline-item:nth-child(even) .timeline-content::before {
     left: -24px;
     right: auto;
+    top: 30px; /* Position arrow higher */
+    transform: none;
     border-right-color: #fff;
     border-left-color: transparent;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
   }
 
   .timeline-marker {
-    left: 30px;
-  }
-
-  .timeline-section {
-    padding: 40px 16px;
-  }
-
-  .timeline-section h2 {
-    font-size: 2rem;
+    left: 25px; /* Align with timeline line */
+    top: 30px; /* Position at top of content */
+    transform: translate(-50%, 0);
   }
 
   .timeline-content {
     padding: 20px;
+    margin-bottom: 10px;
+  }
+
+  .timeline-content:hover {
+    transform: translateY(-3px); /* Reduce hover effect */
   }
 
   .timeline-title {
@@ -246,21 +267,65 @@
   .timeline-description {
     font-size: 14px;
   }
+
+  .timeline-date {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+  .timeline-skill {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
 }
 
 /* Tablet adjustments */
 @media (min-width: 769px) and (max-width: 1024px) {
   .timeline-item:nth-child(odd) .timeline-content {
     right: calc(50% + 25px);
-    max-width: calc(50% - 25px);
+    width: calc(50% - 25px);
   }
 
   .timeline-item:nth-child(even) .timeline-content {
     left: calc(50% + 25px);
-    max-width: calc(50% - 25px);
+    width: calc(50% - 25px);
   }
 
   .timeline-content {
     padding: 20px 25px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .timeline-section {
+    padding: 30px 12px;
+    margin: 15px 5px;
+  }
+
+  .timeline-container {
+    padding: 15px 0;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    left: 45px;
+    width: calc(100% - 60px);
+  }
+
+  .timeline-content {
+    padding: 15px;
+  }
+
+  .timeline-title {
+    font-size: 16px;
+  }
+
+  .timeline-company {
+    font-size: 13px;
+  }
+
+  .timeline-description {
+    font-size: 13px;
   }
 }

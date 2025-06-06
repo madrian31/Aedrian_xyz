@@ -4,8 +4,8 @@ const timelineData = [
   date: "July 2022 - August 2023",
   title: "Student Center Volunteer",
   company: "Unida Christian Church",
-  description: "Assisted in managing and maintaining the Student Center, providing technical support, mentoring youth, and supporting church operations during events and regular services.",
-  skills: ["Volunteer Work", "Technical Support", "Youth Mentorship", "Teamwork"],
+  description: "Assisted in managing and maintaining the Student Center, providing technical support and supporting church operations during events and regular services.",
+  skills: ["Volunteer Work", "Technical Support", "Collaboration", "Teamwork"],
   //icon: "bi-people"
 },
   
