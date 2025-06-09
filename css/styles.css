@@ -12,6 +12,20 @@
   --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* Light theme variables */
+.light-theme {
+  --primary-color: #6a3dff;
+  --secondary-color: #8a63ff;
+  --accent-color: #7c4dff;
+  --text-color: #1a1a1a;
+  --text-light: #555555;
+  --bg-color: #ffffff;
+  --bg-elevated: #f8f9fa;
+  --bg-higher: #e9ecef;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,6 +39,7 @@ body {
   line-height: 1.6;
   padding-top: 80px;
   -webkit-font-smoothing: antialiased;
+  transition: var(--transition);
 }
 
 /* Navigation Styles */
@@ -39,6 +54,11 @@ body {
   transition: var(--transition);
   box-shadow: var(--shadow);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.light-theme .main-nav {
+  background: rgba(248, 249, 250, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
@@ -84,6 +104,7 @@ body {
 .nav-links {
   display: flex;
   gap: 2.5rem;
+  align-items: center;
 }
 
 .nav-link {
@@ -147,12 +168,16 @@ body {
 .header {
   min-height: 300px;
   position: relative;
-  background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-color) 100%);
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding-top: 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.light-theme .header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .profile-pic {
@@ -168,6 +193,10 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: var(--transition);
   filter: grayscale(20%);
+}
+
+.light-theme .profile-pic {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .profile-pic:hover {
@@ -234,6 +263,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.light-theme .content-section {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
 .content-section h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -282,6 +315,11 @@ body {
   color: var(--text-color);
 }
 
+.light-theme .form-group input,
+.light-theme .form-group textarea {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
@@ -318,10 +356,91 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.light-theme .footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
 .footer p {
   color: var(--text-light);
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+}
+
+/* Theme Toggle Styles */
+.theme-switch-nav {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.theme-switch-label {
+  width: 42px;
+  height: 22px;
+  margin: 0;
+  background: var(--bg-higher);
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+  display: block;
+}
+
+.light-theme .theme-switch-label {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-switch-nav input {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.ball {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transition: var(--transition);
+  transform: translateX(0);
+}
+
+.theme-switch-nav input:checked + .theme-switch-label .ball {
+  transform: translateX(20px);
+}
+
+/* Mobile view for theme toggle */
+@media (max-width: 768px) {
+  .theme-switch-nav {
+    margin: 1rem auto;
+    justify-content: center;
+    order: 1;
+    width: 100%;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .light-theme .theme-switch-nav {
+    border-bottom-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .theme-switch-label {
+    width: 50px !important;
+    height: 26px !important;
+  }
+  
+  .ball {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .theme-switch-nav input:checked + .theme-switch-label .ball {
+    transform: translateX(24px) !important;
+  }
 }
 
 /* Tablet view (600px and up) */
@@ -401,6 +520,11 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
+  .light-theme .nav-links {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
   .nav-links.active {
     transform: translateY(0);
     opacity: 1;
@@ -411,6 +535,10 @@ body {
     padding: 1.2rem;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .light-theme .nav-link {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .nav-link:last-child {

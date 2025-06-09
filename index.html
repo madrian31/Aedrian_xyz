@@ -15,28 +15,40 @@
 </head>
 <body>
     
-    <nav class="main-nav">
-    <div class="nav-container">
-      <div class="nav-brand-container">
-        <img src="https://scontent.fmnl36-1.fna.fbcdn.net/v/t39.30808-1/479191544_3856854894556361_7060018834841791012_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHNqLhtxfPi4OilEO5dBn9TLT9zP4yuHpotP3M_jK4emv96wz0bhgb9IslKfBWsX_C8HuRwg88-UEmRZPktY4uP&_nc_ohc=yO-cfyDOE-YQ7kNvwGIQyRG&_nc_oc=AdlAHiqtftt7I998F1Hu3_jOzh8cOIrJtuKneGciTleahoQAndgie_4I5RLXHOGVRJ4&_nc_zt=24&_nc_ht=scontent.fmnl36-1.fna&_nc_gid=_LIq5abWP95Jw6cVazFq7g&oh=00_AfJkwJRtEdEYAhM_TEZZ3eJb8nl8nxN4tVPC-enblWDKgQ&oe=6845F444" 
-             alt="Profile Picture" 
-             class="nav-profile-pic" 
-             id="navProfilePic">
-        <div class="nav-brand">MB</div>
-      </div>
-      <div class="nav-links">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#timeline" class="nav-link">Journey</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+<nav class="main-nav">
+  <div class="nav-container">
+    <div class="nav-brand-container">
+      <img src="https://scontent.fmnl36-1.fna.fbcdn.net/v/t39.30808-1/479191544_3856854894556361_7060018834841791012_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHNqLhtxfPi4OilEO5dBn9TLT9zP4yuHpotP3M_jK4emv96wz0bhgb9IslKfBWsX_C8HuRwg88-UEmRZPktY4uP&_nc_ohc=yO-cfyDOE-YQ7kNvwGIQyRG&_nc_oc=AdlAHiqtftt7I998F1Hu3_jOzh8cOIrJtuKneGciTleahoQAndgie_4I5RLXHOGVRJ4&_nc_zt=24&_nc_ht=scontent.fmnl36-1.fna&_nc_gid=_LIq5abWP95Jw6cVazFq7g&oh=00_AfJkwJRtEdEYAhM_TEZZ3eJb8nl8nxN4tVPC-enblWDKgQ&oe=6845F444" 
+           alt="Profile Picture" 
+           class="nav-profile-pic" 
+           id="navProfilePic">
+      <div class="nav-brand">MB</div>
     </div>
-  </nav>
+    
+   <div class="nav-links">
+  <a href="#home" class="nav-link active">Home</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#timeline" class="nav-link">Journey</a>
+  <a href="#contact" class="nav-link">Contact</a>
+  
+  <!-- Theme toggle in nav -->
+  <div class="theme-switch-nav">
+    <label class="theme-switch-label" for="themeToggle">
+      <input type="checkbox" id="themeToggle" aria-label="Toggle dark mode">
+      <span class="ball"></span>
+    </label>
+  </div>
+</div>
+    
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+
 
   <main>
     <section id="home" class="header">
@@ -93,5 +105,6 @@
 
   <script src="js/script.js"></script>
   <script src="js/timeline.js"></script>
+  <script src="js/theme.js"></script>
 </body>
 </html>
