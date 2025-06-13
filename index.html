@@ -7,6 +7,7 @@
   <title>Marc Adrian Bernales</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/timeline.css" />
+  <link rel="stylesheet" href="css/skills.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,24 +30,25 @@
   <a href="#home" class="nav-link active">Home</a>
   <a href="#about" class="nav-link">About</a>
   <a href="#timeline" class="nav-link">Journey</a>
+  <a href="#skills" class="nav-link">Skills</a>
   <a href="#contact" class="nav-link">Contact</a>
   
   <!-- Enhanced Theme toggle in nav -->
   <div class="theme-toggle-container">
-    <span class="theme-label light-label">Light</span>
-    <div class="theme-toggle-wrapper">
-      <input type="checkbox" id="themeToggle" class="theme-toggle-input" aria-label="Toggle dark mode">
-      <label for="themeToggle" class="theme-toggle-label">
-        <div class="toggle-track">
-          <div class="toggle-thumb">
-            <i class="bi bi-sun theme-icon sun-icon"></i>
-            <i class="bi bi-moon theme-icon moon-icon"></i>
-          </div>
-        </div>
-      </label>
-    </div>
-    <span class="theme-label dark-label">Dark</span>
+  <span class="theme-label light-label">Dark</span> <!-- Binago -->
+  <div class="theme-toggle-wrapper">
+    <input type="checkbox" id="themeToggle" class="theme-toggle-input" aria-label="Toggle dark mode">
+    <label for="themeToggle" class="theme-toggle-label">
+      <div class="toggle-track">
+        <div class="toggle-thumb">
+  <i class="bi bi-moon theme-icon moon-icon"></i>
+  <i class="bi bi-sun theme-icon sun-icon"></i>
+</div>
+      </div>
+    </label>
   </div>
+  <span class="theme-label dark-label">Light</span> <!-- Binago -->
+</div>
 </div>
     
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -87,6 +89,19 @@
       </div>
     </section>
     
+    
+    <section class="skills-section" id="skills">
+      <div class="skills-container">
+      <h2 class="skills-title">My Tech Stack</h2>
+      <p class="skills-subtitle">Technologies and tools I work with</p>
+      
+      <div class="skills-content" id="skillsContent">
+       
+      </div>
+    </div>
+  </section>
+    
+    
     <section class="content-section" id="contact">
       <h2>Get In Touch</h2>
       <p>I'd love to hear from you! Whether you want to collaborate, have questions, or just want to say hello.</p>
@@ -106,6 +121,8 @@
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
     </section>
+    
+    
   </main>
 
   <footer class="footer">
@@ -115,5 +132,6 @@
   <script src="js/script.js"></script>
   <script src="js/timeline.js"></script>
   <script src="js/theme.js"></script>
+  <script src="js/skill.js"></script>
 </body>
 </html>

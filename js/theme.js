@@ -1,4 +1,4 @@
-// theme.js - Fixed version without localStorage
+// theme.js - Fixed version with correct icon handling
 document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('themeToggle');
   const body = document.body;
@@ -6,32 +6,52 @@ document.addEventListener('DOMContentLoaded', function() {
   // Check system preference for initial theme
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
-  // Set initial theme based on system preference
-  if (!prefersDark) {
-    body.classList.add('light-theme');
-    themeToggle.checked = true;
-  } else {
+  // Set initial theme
+  if (prefersDark) {
     body.classList.remove('light-theme');
-    themeToggle.checked = false;
+    themeToggle.checked = false; // Switch OFF for dark mode
+    updateIcons(false); // Show moon icon
+  } else {
+    body.classList.add('light-theme');
+    themeToggle.checked = true; // Switch ON for light mode
+    updateIcons(true); // Show sun icon
   }
   
   // Theme toggle event listener
   themeToggle.addEventListener('change', function() {
     if (this.checked) {
       body.classList.add('light-theme');
-      console.log('Switched to light theme');
+      updateIcons(true); // Show sun icon
     } else {
       body.classList.remove('light-theme');
-      console.log('Switched to dark theme');
+      updateIcons(false); // Show moon icon
     }
   });
   
+  // Function to update icons visibility
+  function updateIcons(isLight) {
+    const moonIcon = document.querySelector('.moon-icon');
+    const sunIcon = document.querySelector('.sun-icon');
+    
+    if (isLight) {
+      moonIcon.style.display = 'none';
+      sunIcon.style.display = 'block';
+    } else {
+      moonIcon.style.display = 'block';
+      sunIcon.style.display = 'none';
+    }
+  }
+  
   // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-    if (!themeToggle.checked && e.matches) {
+    if (e.matches) {
       body.classList.remove('light-theme');
-    } else if (themeToggle.checked && !e.matches) {
+      themeToggle.checked = false;
+      updateIcons(false);
+    } else {
       body.classList.add('light-theme');
+      themeToggle.checked = true;
+      updateIcons(true);
     }
   });
 });
