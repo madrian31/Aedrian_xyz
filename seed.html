@@ -2,46 +2,25 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Title</title>
+        <title>Time Circle Display</title>
         
-        <style>
-            
-            body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center; /* Horizontal Center */
-            align-items: center;     /* Vertical Center */
-            background-color: #f0f0f0;
-        }
-            
-            .circle {
-                width: 40vw;  /* 20% of viewport width */
-                height: 40vw; /* Same as width to keep it a circle */
-                max-width: 400px; /* Optional: Max size limit */
-                max-height: 400px;
-                background-color: #3498db;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: white;
-                font-size: 1.2rem;
-                box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            }
-            
-        </style>
+        <link rel="stylesheet" href="css/seed/seed.css">
         
     </head>
     <body>
-        <!-- <p id="getCurrentDate"></p> -->
+       
+        <div class="world-container">
             
-            <div class="circle" id="circle">
+            <div class="circle-masked">
+              <div class="circle" id="circle">
+                 <img src="img/seed/plant.png" class="plant">
+                <div class="world-based"></div>
+              </div>
             </div>
+           
+        </div>
+        <!-- <p id="getCurrentDate"></p> -->
         
         <script src="js/seed/DateAndTime.js"></script>
-        <script src="js/seed/background.js"></script>
     </body>
-   
 </html>
-
