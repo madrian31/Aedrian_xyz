@@ -1,151 +1,109 @@
-// Timeline Data Object
+// Timeline data with FIXED dates and logical career progression
 const timelineData = [
   {
-    date: "July 2022 - August 2023",
-    title: "Student Center Volunteer",
-    company: "Unida Christian Church",
-    description: "Assisted in managing and maintaining the Student Center, providing technical support and supporting church operations during events and regular services.",
-    skills: ["Volunteer Work", "Technical Support", "Collaboration", "Teamwork"],
-    //icon: "bi-people"
-  },
-  {
-    date: "February 2024 - June 2024",
-    title: "Student Center Internship",
-    company: "Unida Christian College",
-    description: "Assisted in managing and maintaining the Student Center, providing technical support, mentoring youth, and supporting church operations during events and regular services.",
-    skills: ["Technical Support", "Teamwork", "Collaboration"],
-    //icon: "bi-people"
-  },
-  {
-    date: "August 2021 - July 2024",
-    title: "Graduated College",
-    company: "Bachelor of Science in Information Technology",
-    description: "Successfully completed a four-year degree in Information Technology with a focus on software development and web technologies.",
-    skills: ["Web Development", "Database Design", "Programming"],
-    //icon: "bi-book"
+    date: "January 2025 - Present",
+    title: "Junior Programmer",
+    company: "Tech Company",
+    description: "Started my professional programming career, focusing on web development and software solutions. Working with modern technologies and contributing to various projects.",
+    skills: ["Web Development", "Programming", "Problem Solving", "Team Collaboration"]
   },
   {
     date: "August 2024 - December 2024",
     title: "IT Instructor",
     company: "STI College Carmona",
     description: "Taught core IT subjects to college students, focusing on web development, programming logic, and hands-on activities. Encouraged student engagement through interactive lessons and real-world project simulations.",
-    skills: ["Teaching", "Web Development", "Programming Logic", "Classroom Management"],
-    //icon: "bi-mortarboard"
+    skills: ["Teaching", "Web Development", "Programming Logic", "Student Mentoring"]
   },
   {
-    date: "January 2025",
-    title: "Started as Junior Programmer",
-    company: "Software Company",
-    description: "Joined a company as a Junior Programmer focused on backend maintenance and front-end bug fixes.",
-    skills: ["MVC", "ASP", "Jquery", "SQL"],
-    //icon: "bi-terminal"
+    date: "February 2024 - July 2024",
+    title: "Student Center Internship",
+    company: "Unida Christian College",
+    description: "Completed internship during final semester, assisting in managing and maintaining the Student Center, providing technical support, mentoring youth, and supporting church operations during events and regular services.",
+    skills: ["Technical Support", "Event Management", "Youth Mentoring", "Church Operations"]
+  },
+  {
+    date: "August 2020 - July 2024",
+    title: "Graduated College",
+    company: "Bachelor of Science in Information Technology",
+    description: "Successfully completed a four-year degree in Information Technology with a focus on software development and web technologies. Gained comprehensive knowledge in programming, database design, and system analysis.",
+    skills: ["Web Development", "Database Design", "Programming", "System Analysis"]
+  },
+  {
+    date: "July 2022 - August 2023",
+    title: "Student Center Volunteer",
+    company: "Unida Christian Church",
+    description: "Volunteered during college years, assisting in managing and maintaining the Student Center, providing technical support and supporting church operations during events and regular services.",
+    skills: ["Volunteer Work", "Technical Support", "Community Service", "Event Support"]
   }
 ];
 
-// DOM Elements
-const timelineContainer = document.getElementById('timelineItems');
-const timelineLine = document.querySelector('.timeline-line');
+// Function to create timeline HTML
+function createTimelineHTML() {
+  const timelineContainer = document.getElementById('timelineItems');
+  if (!timelineContainer) return;
 
-// Create DOM elements without HTML strings
-function createElement(tag, className, textContent) {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (textContent) element.textContent = textContent;
-  return element;
-}
-
-function createTimelineItem(item) {
-  // Create timeline item container
-  const timelineItem = createElement('div', 'timeline-item');
-  
-  // Create marker with icon
-  const marker = createElement('div', 'timeline-marker');
-  const icon = createElement('i', `bi ${item.icon}`);
-  marker.appendChild(icon);
-  
-  // Create content container
-  const content = createElement('div', 'timeline-content');
-  
-  // Add date
-  content.appendChild(createElement('div', 'timeline-date', item.date));
-  
-  // Add title
-  content.appendChild(createElement('div', 'timeline-title', item.title));
-  
-  // Add company
-  content.appendChild(createElement('div', 'timeline-company', item.company));
-  
-  // Add description
-  content.appendChild(createElement('div', 'timeline-description', item.description));
-  
-  // Add skills container
-  const skillsContainer = createElement('div', 'timeline-skills');
-  item.skills.forEach(skill => {
-    skillsContainer.appendChild(createElement('span', 'timeline-skill', skill));
+  timelineData.forEach((item, index) => {
+    const timelineItem = document.createElement('div');
+    timelineItem.className = 'timeline-item';
+    
+    timelineItem.innerHTML = `
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">${item.date}</div>
+        <h3 class="timeline-title">${item.title}</h3>
+        <h4 class="timeline-company">${item.company}</h4>
+        <p class="timeline-description">${item.description}</p>
+        <div class="timeline-skills">
+          ${item.skills.map(skill => `<span class="timeline-skill">${skill}</span>`).join('')}
+        </div>
+      </div>
+    `;
+    
+    timelineContainer.appendChild(timelineItem);
   });
-  content.appendChild(skillsContainer);
-  
-  // Assemble item
-  timelineItem.appendChild(marker);
-  timelineItem.appendChild(content);
-  
-  return timelineItem;
 }
 
-function renderTimeline() {
-  // Clear existing items
-  timelineContainer.innerHTML = '';
+// Function to animate timeline items on scroll
+function animateTimeline() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
   
-  // Add new items
-  timelineData.forEach(item => {
-    timelineContainer.appendChild(createTimelineItem(item));
-  });
-  
-  adjustTimelineLine();
-}
-
-function adjustTimelineLine() {
-  const items = document.querySelectorAll('.timeline-item');
-  if (items.length === 0) return;
-  
-  const firstItem = items[0];
-  const lastItem = items[items.length - 1];
-  
-  timelineLine.style.top = `${firstItem.offsetTop}px`;
-  timelineLine.style.height = `${lastItem.offsetTop + lastItem.offsetHeight - firstItem.offsetTop}px`;
-}
-
-// Initialize animations
-function initializeAnimation() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate');
       }
     });
-  }, { 
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
   });
   
-  document.querySelectorAll('.timeline-item').forEach(item => {
+  timelineItems.forEach(item => {
     observer.observe(item);
   });
 }
 
-// Event listeners
-window.addEventListener('resize', () => {
-  clearTimeout(window.resizeTimer);
-  window.resizeTimer = setTimeout(() => {
-    adjustTimelineLine();
-  }, 250);
+// Initialize timeline when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  createTimelineHTML();
+  
+  // Add a small delay to ensure elements are rendered
+  setTimeout(() => {
+    animateTimeline();
+  }, 100);
 });
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  renderTimeline();
-  initializeAnimation();
-  
-  // Adjust timeline line after images load
-  window.addEventListener('load', adjustTimelineLine);
-});
+// Also initialize if script loads after DOM
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    createTimelineHTML();
+    setTimeout(() => {
+      animateTimeline();
+    }, 100);
+  });
+} else {
+  createTimelineHTML();
+  setTimeout(() => {
+    animateTimeline();
+  }, 100);
+}

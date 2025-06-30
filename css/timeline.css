@@ -40,12 +40,12 @@
 
 .timeline-item {
   position: relative;
-  margin: 60px 0;
+  margin: 120px 0; /* Increased to 120px for better spacing */
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.6s ease;
   width: 100%;
-  min-height: 140px;
+  min-height: 200px; /* Increased to accommodate content */
   display: flex;
   align-items: center;
 }
@@ -85,6 +85,7 @@
   transition: all 0.3s ease;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  margin-bottom: 20px; /* Added margin bottom */
 }
 
 .light-theme .timeline-content {
@@ -92,7 +93,7 @@
 }
 
 .timeline-content:hover {
-  transform: translateY(-5px) translateY(-50%) !important;
+  transform: translateY(-5px) translateY(-60%) !important; /* Adjusted for new positioning */
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
   border-color: var(--primary-color);
 }
@@ -199,6 +200,31 @@
   border: 1px solid rgba(138, 99, 255, 0.15);
 }
 
+/* Desktop specific spacing - Added this new media query */
+@media (min-width: 769px) {
+  .timeline-item {
+    margin: 140px 0; /* Even more spacing for desktop */
+    min-height: 220px; /* Ensure enough height for content */
+  }
+  
+  .timeline-item:first-child {
+    margin-top: 80px;
+  }
+  
+  .timeline-item:last-child {
+    margin-bottom: 80px;
+  }
+
+  /* Additional spacing adjustments for content positioning */
+  .timeline-item:nth-child(odd) .timeline-content {
+    top: 40%; /* Adjust vertical position */
+  }
+
+  .timeline-item:nth-child(even) .timeline-content {
+    top: 40%; /* Adjust vertical position */
+  }
+}
+
 /* Mobile Timeline */
 @media (max-width: 768px) {
   .timeline-section {
@@ -223,6 +249,7 @@
   .timeline-item {
     margin: 40px 0;
     display: block;
+    min-height: auto; /* Reset min-height for mobile */
   }
 
   .timeline-item:nth-child(odd) .timeline-content,
@@ -235,6 +262,7 @@
     text-align: left;
     width: calc(100% - 80px);
     margin-top: 20px;
+    margin-bottom: 0; /* Reset margin for mobile */
   }
 
   .timeline-item:nth-child(odd) .timeline-content::before,

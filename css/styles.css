@@ -114,7 +114,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -145,7 +145,7 @@ body {
   border-radius: 1px;
 }
 
-/* Enhanced Theme Toggle Styles */
+/* Theme Toggle Styles */
 .theme-toggle-container {
   display: flex;
   align-items: center;
@@ -163,20 +163,19 @@ body {
 }
 
 .theme-label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-muted);
   transition: var(--toggle-transition);
   user-select: none;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  white-space: nowrap;
+  min-width: 30px;
+  text-align: center;
 }
 
-.light-label.active {
-  color: var(--text-color);
-  font-weight: 600;
-}
-
+.light-label.active,
 .dark-label.active {
   color: var(--text-color);
   font-weight: 600;
@@ -184,6 +183,7 @@ body {
 
 .theme-toggle-wrapper {
   position: relative;
+  flex-shrink: 0;
 }
 
 .theme-toggle-input {
@@ -200,8 +200,8 @@ body {
 }
 
 .toggle-track {
-  width: 60px;
-  height: 32px;
+  width: 50px;
+  height: 26px;
   background: var(--toggle-green);
   border-color: var(--toggle-green);
   border-radius: 50px;
@@ -223,8 +223,8 @@ body {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   background: var(--toggle-thumb);
   border-radius: 50%;
   transition: var(--toggle-transition);
@@ -240,11 +240,11 @@ body {
 }
 
 .theme-toggle-input:checked + .theme-toggle-label .toggle-thumb {
-  transform: translateX(28px);
+  transform: translateX(22px);
 }
 
 .theme-icon {
-  font-size: 12px;
+  font-size: 10px;
   position: absolute;
   transition: var(--toggle-transition);
 }
@@ -257,25 +257,23 @@ body {
 
 .moon-icon {
   color: #6366f1;
-  /*opacity: 0;*/
   transform: scale(0.8) rotate(0deg);
 }
 
-/* Hide/show icons based on toggle state */
-.theme-toggle-input:checked ~ .theme-toggle-label .moon-icon {
-  display: none;
+.theme-toggle-input:checked + .theme-toggle-label .moon-icon {
+  opacity: 0;
 }
 
-.theme-toggle-input:checked ~ .theme-toggle-label .sun-icon {
-  display: block;
+.theme-toggle-input:checked + .theme-toggle-label .sun-icon {
+  opacity: 1;
 }
 
-.theme-toggle-input:not(:checked) ~ .theme-toggle-label .sun-icon {
-  display: none;
+.theme-toggle-input:not(:checked) + .theme-toggle-label .sun-icon {
+  opacity: 0;
 }
 
-.theme-toggle-input:not(:checked) ~ .theme-toggle-label .moon-icon {
-  display: block;
+.theme-toggle-input:not(:checked) + .theme-toggle-label .moon-icon {
+  opacity: 1;
 }
 
 .nav-toggle {
@@ -418,13 +416,15 @@ body {
   position: relative;
   padding-bottom: 0.5rem;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .content-section h2::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60px;
   height: 3px;
   background: var(--accent-color);
@@ -510,64 +510,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Tablet view (600px and up) */
-@media (min-width: 600px) {
-  .header {
-    min-height: 350px;
-  }
-
-  .profile-pic {
-    width: 180px;
-    height: 180px;
-    bottom: -90px;
-  }
-
-  .intro-section {
-    padding: 7rem 1rem 4rem;
-  }
-
-  .name {
-    font-size: 2.8rem;
-  }
-
-  .title {
-    font-size: 1.3rem;
-  }
-
-  .content-section {
-    padding: 4rem 3rem;
-  }
-}
-
-/* Desktop view (992px and up) */
-@media (min-width: 992px) {
-  .header {
-    min-height: 400px;
-  }
-
-  .profile-pic {
-    width: 200px;
-    height: 200px;
-    bottom: -100px;
-  }
-
-  .intro-section {
-    padding: 8rem 1rem 5rem;
-  }
-
-  .name {
-    font-size: 3rem;
-  }
-
-  .title {
-    font-size: 1.4rem;
-  }
-
-  .content-section {
-    padding: 5rem 4rem;
-  }
-}
-
 /* Mobile Navigation */
 @media (max-width: 768px) {
   .nav-links {
@@ -618,27 +560,8 @@ body {
     order: 1;
     width: auto;
     background: var(--bg-higher);
-    padding: 12px 20px;
-    gap: 16px;
-  }
-
-  .theme-label {
-    font-size: 0.75rem;
-  }
-
-  .toggle-track {
-    width: 50px;
-    height: 28px;
-  }
-
-  .toggle-thumb {
-    width: 22px;
-    height: 22px;
-    top: 2px;
-  }
-
-  .theme-toggle-input:checked + .theme-toggle-label .toggle-thumb {
-    transform: translateX(22px);
+    padding: 10px 16px;
+    gap: 12px;
   }
 
   .nav-toggle {
@@ -647,6 +570,58 @@ body {
 
   .nav-container {
     padding: 0 24px;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+  
+  .nav-brand {
+    font-size: 1.3rem;
+  }
+  
+  .nav-profile-pic {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .intro-section {
+    padding: 5rem 1rem 3rem;
+  }
+  
+  .name {
+    font-size: 2rem;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .theme-toggle-container {
+    padding: 8px 14px;
+    gap: 10px;
+  }
+  
+  .theme-label {
+    font-size: 0.7rem;
+    min-width: 28px;
+  }
+  
+  .toggle-track {
+    width: 44px;
+    height: 24px;
+  }
+  
+  .toggle-thumb {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .theme-toggle-input:checked + .theme-toggle-label .toggle-thumb {
+    transform: translateX(18px);
   }
 }
 
