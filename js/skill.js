@@ -27,8 +27,9 @@ const skillsData = {
     skills: [
       { name: "GitHub", icon: "bi-github", key: "github" },
       { name: "VS Code", icon: "bi-code-slash",  key: "vscode" },
-      { name: "Figma", icon: "bi-palette2", key: "figma" },
-      { name: "Photoshop", icon: "bi-image",  key: "photoshop" },
+{ name: "Figma", icon: "bi-ui-radios", key: "figma" },        // More UI-focused
+{ name: "Photoshop", icon: "bi-image", key: "photoshop" },
+{ name: "Illustrator", icon: "bi-vector-pen", key: "illustrator" }, // Keep vector pen for AI
       { name: "Xampp", icon: "bi-server", key: "xampp" },
     ]
   }

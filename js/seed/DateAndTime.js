@@ -65,7 +65,7 @@
                 // year = 2099;
                 // month = "12";
                 //day = "19";
-                //hour = 15; // Make sure this is a number
+                //hour = 23; // Make sure this is a number
                 // minutes = "30";
                 // seconds = "00";
 
