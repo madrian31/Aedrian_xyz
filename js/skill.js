@@ -1,24 +1,27 @@
-// Skills Data
+// Enhanced Skills Data with New Technologies
 const skillsData = {
   primary: {
     title: "Core Technologies",
     description: "My primary programming languages and technologies",
     skills: [
-      { name: "HTML5", icon: "bi-filetype-html",  key: "html" },
-      { name: "CSS3", icon: "bi-filetype-css",  key: "css" },
+      { name: "HTML5", icon: "bi-filetype-html", key: "html" },
+      { name: "CSS3", icon: "bi-filetype-css", key: "css" },
       { name: "JavaScript", icon: "bi-filetype-js", key: "javascript" },
-      { name: "PHP", icon: "bi-filetype-php",  key: "php" },
-      { name: "MySQL", icon: "bi-database",  key: "mysql" },
-      { name: "Python", icon: "bi-filetype-py", key: "python" }
+      { name: "PHP", icon: "bi-filetype-php", key: "php" },
+      { name: "C#", icon: "bi-file-code", key: "csharp" }, // NEW
+      { name: "Python", icon: "bi-filetype-py", key: "python" },
+      { name: "SQL", icon: "bi-database", key: "mysql" }
     ]
   },
   frameworks: {
-    title: "Frameworks & Libraries",
-    description: "Frontend and backend frameworks I work with",
+    title: "Frameworks & Patterns",
+    description: "Architectural patterns and frameworks I work with",
     skills: [
       { name: "React", icon: "bi-bootstrap", key: "react" },
+      { name: "MVC Pattern", icon: "bi-diagram-3", key: "mvc" }, // NEW
+      { name: ".NET", icon: "bi-microsoft", key: "dotnet" }, // NEW (pairs with C#)
       { name: "Bootstrap", icon: "bi-bootstrap-fill", key: "bootstrap" },
-      { name: "jQuery", icon: "bi-code-square", key: "jquery" },
+      { name: "jQuery", icon: "bi-code-square", key: "jquery" }
     ]
   },
   tools: {
@@ -26,14 +29,51 @@ const skillsData = {
     description: "Development tools and software I use daily",
     skills: [
       { name: "GitHub", icon: "bi-github", key: "github" },
-      { name: "VS Code", icon: "bi-code-slash",  key: "vscode" },
-{ name: "Figma", icon: "bi-ui-radios", key: "figma" },        // More UI-focused
-{ name: "Photoshop", icon: "bi-image", key: "photoshop" },
-{ name: "Illustrator", icon: "bi-vector-pen", key: "illustrator" }, // Keep vector pen for AI
-      { name: "Xampp", icon: "bi-server", key: "xampp" },
+      { name: "VS Code", icon: "bi-code-slash", key: "vscode" },
+      { name: "Jira", icon: "bi-kanban", key: "jira" }, // NEW
+      { name: "Figma", icon: "bi-ui-radios", key: "figma" },
+      { name: "Photoshop", icon: "bi-image", key: "photoshop" },
+      { name: "Illustrator", icon: "bi-vector-pen", key: "illustrator" },
+      { name: "Xampp", icon: "bi-server", key: "xampp" }
+    ]
+  },
+  automation: { // NEW SECTION
+    title: "Automation & Integration",
+    description: "Workflow automation and system integration tools",
+    skills: [
+      { name: "n8n", icon: "bi-workflow", key: "n8n" },
+      { name: "API Integration", icon: "bi-plug", key: "api" },
+      { name: "Webhooks", icon: "bi-arrow-left-right", key: "webhooks" }
     ]
   }
 };
+
+// Updated CSS additions for new skills
+const additionalSkillColors = `
+/* New Skill Colors */
+.skill-item[data-skill="csharp"] .skill-icon { color: #239120; }
+.skill-item[data-skill="mvc"] .skill-icon { color: #512BD4; }
+.skill-item[data-skill="dotnet"] .skill-icon { color: #512BD4; }
+.skill-item[data-skill="jira"] .skill-icon { color: #0052CC; }
+.skill-item[data-skill="n8n"] .skill-icon { color: #EA4B71; }
+.skill-item[data-skill="api"] .skill-icon { color: #FF6B35; }
+.skill-item[data-skill="webhooks"] .skill-icon { color: #4ECDC4; }
+
+/* New automation tier styling */
+.tier-automation .skills-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+`;
+
+// Function to inject additional styles
+function addNewSkillStyles() {
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = additionalSkillColors;
+  document.head.appendChild(styleSheet);
+}
 
 // DOM Elements
 const skillsContent = document.getElementById('skillsContent');
@@ -92,6 +132,9 @@ function createSkillsTier(tierKey, tierData) {
 
 // Initialize skills section
 function initializeSkills() {
+  // Add new styles
+  addNewSkillStyles();
+  
   // Clear existing content
   skillsContent.innerHTML = '';
   
@@ -105,7 +148,7 @@ function initializeSkills() {
   initializeSkillAnimations();
 }
 
-// Animation on scroll
+// Animation on scroll (keeping existing function)
 function initializeSkillAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -136,7 +179,7 @@ function initializeSkillAnimations() {
   });
 }
 
-// Search functionality (optional)
+// Search functionality (keeping existing)
 function searchSkills(query) {
   const skillItems = document.querySelectorAll('.skill-item');
   const lowerQuery = query.toLowerCase();
@@ -157,7 +200,7 @@ function searchSkills(query) {
   });
 }
 
-// Filter by tier
+// Filter by tier (keeping existing)
 function filterByTier(tierName) {
   const tiers = document.querySelectorAll('.skills-tier');
   
@@ -170,23 +213,15 @@ function filterByTier(tierName) {
   });
 }
 
-// Add skill click interaction
+// Add skill click interaction (keeping existing)
 function addSkillInteractions() {
   document.querySelectorAll('.skill-item').forEach(item => {
     item.addEventListener('click', () => {
       const skillName = item.querySelector('.skill-name').textContent;
-    
-      
-      // You can add more interaction here like showing a modal with more details
- 
-      
-      // Optional: Show a tooltip or modal with more information
-    
+      // You can add more interaction here
     });
   });
 }
-
-
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
