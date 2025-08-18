@@ -19,21 +19,23 @@ const timelineData = [
     title: "IT Support Internship",
     company: "Unida Christian College",
     description: "Completed internship during final semester, assisting in managing and maintaining the Student Center and providing technical support",
-    skills: ["Technical Support", "Event Management", "Youth Mentoring", "Church Operations"]
+    skills:[
+    "Technical Support","Hardware & Software Troubleshooting", "Network Maintenance","Helpdesk Support",  "User Training & Assistance",  "System Configuration"
+  ]
   },
   {
     date: "August 2020 - July 2024",
     title: "Graduated College",
     company: "Bachelor of Science in Information Technology",
     description: "Successfully completed a four-year degree in Information Technology with a focus on software development and web technologies. Gained comprehensive knowledge in programming, database design, and system analysis.",
-    skills: ["Web Development", "Database Design", "Programming", "System Analysis"]
+    skills: ["Web Development", "Database Design", "Programming", "System Analysis", "UI/UX", "Software Testing"]
   },
   {
     date: "July 2022 - August 2023",
     title: "Student Center Volunteer",
     company: "Unida Christian Church",
     description: "Volunteered during college years, assisting in managing and maintaining the Student Center, providing technical support and supporting church operations during events and regular services.",
-    skills: ["Volunteer Work", "Technical Support", "Community Service", "Event Support"]
+    skills: ["Technical Support","Hardware & Software Troubleshooting", "Network Maintenance", "Community Service", "Volunteer Work",]
   }
 ];
 
