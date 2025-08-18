@@ -16,9 +16,9 @@ const timelineData = [
   },
   {
     date: "February 2024 - July 2024",
-    title: "Student Center Internship",
+    title: "IT Support Internship",
     company: "Unida Christian College",
-    description: "Completed internship during final semester, assisting in managing and maintaining the Student Center, providing technical support, mentoring youth, and supporting church operations during events and regular services.",
+    description: "Completed internship during final semester, assisting in managing and maintaining the Student Center and providing technical support",
     skills: ["Technical Support", "Event Management", "Youth Mentoring", "Church Operations"]
   },
   {
@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Also initialize if script loads after DOM
+/*
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     createTimelineHTML();
@@ -107,3 +108,4 @@ if (document.readyState === 'loading') {
     animateTimeline();
   }, 100);
 }
+*/
