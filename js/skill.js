@@ -1,4 +1,4 @@
-// Enhanced Skills Data with New Technologies
+// Enhanced Skills Data with New Technologies (Updated)
 const skillsData = {
   primary: {
     title: "Core Technologies",
@@ -6,9 +6,11 @@ const skillsData = {
     skills: [
       { name: "HTML5", icon: "bi-filetype-html", key: "html" },
       { name: "CSS3", icon: "bi-filetype-css", key: "css" },
+      { name: "SCSS/Sass", icon: "bi-filetype-scss", key: "scss" }, // ADDED
       { name: "JavaScript", icon: "bi-filetype-js", key: "javascript" },
       { name: "PHP", icon: "bi-filetype-php", key: "php" },
-      { name: "C#", icon: "bi-file-code", key: "csharp" }, // NEW
+      { name: "C#", icon: "bi-hash", key: "csharp" },
+      { name: "Java", icon: "bi-cup-hot", key: "java" }, // ADDED
       { name: "Python", icon: "bi-filetype-py", key: "python" },
       { name: "SQL", icon: "bi-database", key: "mysql" }
     ]
@@ -18,8 +20,8 @@ const skillsData = {
     description: "Architectural patterns and frameworks I work with",
     skills: [
       { name: "React", icon: "bi-bootstrap", key: "react" },
-      { name: "MVC Pattern", icon: "bi-diagram-3", key: "mvc" }, // NEW
-      { name: ".NET", icon: "bi-microsoft", key: "dotnet" }, // NEW (pairs with C#)
+      { name: "MVC Pattern", icon: "bi-diagram-3", key: "mvc" },
+      { name: ".NET", icon: "bi-microsoft", key: "dotnet" },
       { name: "Bootstrap", icon: "bi-bootstrap-fill", key: "bootstrap" },
       { name: "jQuery", icon: "bi-code-square", key: "jquery" }
     ]
@@ -30,14 +32,14 @@ const skillsData = {
     skills: [
       { name: "GitHub", icon: "bi-github", key: "github" },
       { name: "VS Code", icon: "bi-code-slash", key: "vscode" },
-      { name: "Jira", icon: "bi-kanban", key: "jira" }, // NEW
+      { name: "Jira", icon: "bi-kanban", key: "jira" },
       { name: "Figma", icon: "bi-ui-radios", key: "figma" },
       { name: "Photoshop", icon: "bi-image", key: "photoshop" },
       { name: "Illustrator", icon: "bi-vector-pen", key: "illustrator" },
       { name: "Xampp", icon: "bi-server", key: "xampp" }
     ]
   },
-  automation: { // NEW SECTION
+  automation: {
     title: "Automation & Integration",
     description: "Workflow automation and system integration tools",
     skills: [
@@ -48,9 +50,9 @@ const skillsData = {
   }
 };
 
-// Updated CSS additions for new skills
+// Updated CSS additions for new skills (including SCSS and Java)
 const additionalSkillColors = `
-/* New Skill Colors */
+/* Existing Skill Colors */
 .skill-item[data-skill="csharp"] .skill-icon { color: #239120; }
 .skill-item[data-skill="mvc"] .skill-icon { color: #512BD4; }
 .skill-item[data-skill="dotnet"] .skill-icon { color: #512BD4; }
@@ -59,12 +61,36 @@ const additionalSkillColors = `
 .skill-item[data-skill="api"] .skill-icon { color: #FF6B35; }
 .skill-item[data-skill="webhooks"] .skill-icon { color: #4ECDC4; }
 
-/* New automation tier styling */
+/* New Skill Colors */
+.skill-item[data-skill="scss"] .skill-icon { color: #CF649A; }
+.skill-item[data-skill="java"] .skill-icon { color: #ED8B00; }
+
+/* Center all skills grids */
+.skills-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Specific styling for automation tier */
 .tier-automation .skills-grid {
   display: flex;
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
+}
+
+/* Ensure proper centering for all tiers */
+.tier-primary .skills-grid,
+.tier-frameworks .skills-grid,
+.tier-tools .skills-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 `;
 
