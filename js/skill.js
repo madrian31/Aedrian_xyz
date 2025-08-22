@@ -265,3 +265,4 @@ window.SkillsSection = {
   filter: filterByTier,
   refresh: initializeSkills
 };
+
