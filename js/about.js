@@ -28,13 +28,8 @@ const aboutData = {
       title: "UI/UX Design",
       description: "Creating user-centered designs that are both beautiful and functional."
     },
-    {
-      key: "gaming",
-      icon: "bi-controller",
-      title: "Gaming",
-      description: "Enjoying various games and understanding interactive user experiences."
-    },
-    {
+    
+    { 
       key: "music",
       icon: "bi-music-note-beamed",
       title: "Music",
