@@ -150,29 +150,41 @@
     <!-- Projects Section - Coming Soon -->
     <section class="content-section" id="projects">
       <h2>My Projects</h2>
-      <div class="projects-coming-soon">
         <div class="coming-soon-content">
-          <i class="bi bi-tools" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-          <h3>Projects Coming Soon</h3>
-          <p>I'm currently working on some exciting projects that I'll be showcasing here soon. Stay tuned!</p>
-          <div class="coming-soon-features">
-            <div class="feature-item">
-              <i class="bi bi-code-slash"></i>
-              <span>Web Applications</span>
-            </div>
-            <div class="feature-item">
-              <i class="bi bi-palette"></i>
-              <span>UI/UX Designs</span>
-            </div>
-            <div class="feature-item">
-              <i class="bi bi-robot"></i>
-              <span>AI Projects</span>
-            </div>
-          </div>
-        </div>
+ 
+  <!-- Category Filter Buttons -->
+  <div class="img-gallery-filters" id="imgGalleryFilters">
+    <button class="img-gallery-filter-btn img-gallery-active" data-category="all">
+      <i class="fas fa-th-large" style="margin-right: 5px;"></i>All
+    </button>
+  </div>
+
+  <div class="img-gallery-grid" id="imgGalleryGrid"></div>
+
+          
       </div>
     </section>
 
+    <!-- Modal -->
+<div id="imgGalleryModal" class="img-gallery-modal">
+  <div class="img-gallery-modal-content">
+    <span class="img-gallery-close">&times;</span>
+    <div class="img-gallery-modal-left">
+      <div class="img-gallery-modal-title" id="imgGalleryModalTitle">Project Title</div>
+      <div class="img-gallery-modal-description" id="imgGalleryModalDescription">
+        Project description will appear here...
+      </div>
+    </div>
+    <div class="img-gallery-modal-right">
+      <div class="img-gallery-carousel-container">
+        <img id="imgGalleryCarouselImage" class="img-gallery-carousel-image" src="" alt="">
+      </div>
+      <div class="img-gallery-carousel-dots" id="imgGalleryCarouselDots">
+      </div>
+    </div>
+  </div>
+</div>
+    
     <section class="content-section" id="contact">
       <h2>Get In Touch</h2>
       <p>I'd love to hear from you! Whether you want to collaborate, have questions, or just want to say hello.</p>
@@ -204,6 +216,7 @@
   <script src="js/skill.js"></script>
   <script src="js/about.js"></script>
   <script src="js/profile-flip.js"></script>
+  <script src="js/project.js"></script>
   <script src="js/certificates.js"></script>
 </body>
 </html>
