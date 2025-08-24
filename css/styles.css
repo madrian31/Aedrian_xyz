@@ -276,6 +276,7 @@ body {
   opacity: 1;
 }
 
+/* Enhanced Hamburger Menu Button Styles */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -283,27 +284,104 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 12px;
   z-index: 1001;
+  position: relative;
+  border-radius: 8px;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.nav-toggle:hover {
+  background: var(--bg-higher);
+  box-shadow: 0 4px 15px rgba(138, 99, 255, 0.2);
+}
+
+.light-theme .nav-toggle:hover {
+  box-shadow: 0 4px 15px rgba(138, 99, 255, 0.15);
 }
 
 .nav-toggle span {
   width: 26px;
-  height: 2px;
+  height: 3px;
   background: var(--text-color);
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: 2px;
+  position: relative;
+  transform-origin: center;
+  opacity: 1;
+}
+
+/* Hover effects for individual hamburger lines */
+.nav-toggle:hover span:nth-child(1) {
+  transform: translateX(2px);
+  background: var(--primary-color);
+}
+
+.nav-toggle:hover span:nth-child(2) {
+  background: var(--secondary-color);
+}
+
+.nav-toggle:hover span:nth-child(3) {
+  transform: translateX(-2px);
+  background: var(--accent-color);
+}
+
+/* Enhanced active state styles */
+.nav-toggle.active span {
+  background: var(--primary-color);
 }
 
 .nav-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(8px, 8px);
+  width: 28px;
 }
 
 .nav-toggle.active span:nth-child(2) {
   opacity: 0;
+  transform: translateX(20px);
 }
 
 .nav-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transform: rotate(-45deg) translate(8px, -8px);
+  width: 28px;
+}
+
+/* Hamburger Menu Animations */
+@keyframes hamburgerPulse {
+  0% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(138, 99, 255, 0.4);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 0 8px rgba(138, 99, 255, 0.1);
+  }
+  100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(138, 99, 255, 0);
+  }
+}
+
+@keyframes hamburgerBreathe {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scaleX(1);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scaleX(0.9);
+  }
+}
+
+
+/* Breathing animation for idle state */
+.nav-toggle.breathing-idle span {
+  animation: hamburgerBreathe 3s ease-in-out infinite !important;
+}
+
+.nav-toggle.breathing-idle {
+  animation: hamburgerPulse 4s ease-in-out infinite !important;
 }
 
 /* Header Section */
@@ -566,8 +644,45 @@ body {
 
   .nav-toggle {
     display: flex;
+    /*     animation: hamburgerPulse 3s ease-in-out infinite;*/
   }
 
+  /* Mobile hamburger animations */
+  .nav-toggle span {
+    animation: hamburgerBreathe 2s ease-in-out infinite;
+  }
+  
+  .nav-toggle span:nth-child(1) { animation-delay: 0s; }
+  .nav-toggle span:nth-child(2) { animation-delay: 0.3s; }
+  .nav-toggle span:nth-child(3) { animation-delay: 0.6s; }
+  
+  .nav-toggle:active {
+    animation: hamburgerWobble 0.5s ease-in-out;
+  }
+  
+  .nav-toggle.intro-animation {
+    animation: hamburgerPulse 1s ease-out, hamburgerWobble 0.8s ease-out 0.5s;
+  }
+  
+  /* Glowing background effect */
+  .nav-toggle::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    border-radius: 10px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-toggle:hover::before {
+    opacity: 0.3;
+  }
+  
   .nav-container {
     padding: 0 24px;
   }
@@ -622,6 +737,26 @@ body {
   
   .theme-toggle-input:checked + .theme-toggle-label .toggle-thumb {
     transform: translateX(18px);
+  }
+
+  /* Enhanced mobile hamburger styles */
+  .nav-toggle {
+    padding: 10px;
+  }
+  
+  .nav-toggle span {
+    width: 22px;
+    height: 2.5px;
+  }
+  
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+    width: 24px;
+  }
+  
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    width: 24px;
   }
 }
 
