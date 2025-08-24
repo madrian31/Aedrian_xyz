@@ -3,9 +3,9 @@ const aboutData = {
   bio: {
     title: "Hello, I'm Marc Adrian",
     paragraphs: [
-      "I'm a passionate <span class='highlight'>UI/UX Designer</span>, <span class='highlight'>Junior Programmer</span>, and <span class='highlight'>AI Enthusiast</span> who loves creating digital experiences that are both beautiful and functional.",
-      "With a Bachelor's degree in <span class='highlight'>Information Technology</span>, I combine clean code, intuitive design, and cutting-edge AI tools to build meaningful digital solutions.",
-      "Always excited to explore new technologies, collaborate with fellow creators, and push the boundaries of what's possible in tech."
+      "I'm a passionate <span class='highlight'>UI/UX Designer</span>, <span class='highlight'>Junior Programmer</span>, and <span class='highlight'>AI Enthusiast</span> creating beautiful and functional digital experiences.",
+      "With a degree in <span class='highlight'>Information Technology</span>, I blend clean code, intuitive design, and AI tools to craft meaningful solutions.",
+      "Always eager to learn, collaborate, and push the limits of technology."
     ]
   },
   stats: [
