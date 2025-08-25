@@ -21,58 +21,58 @@ function toggleTheme() {
 
 // Load saved theme on page load
 document.addEventListener('DOMContentLoaded', function() {
-
+  // For real implementation, uncomment these lines:
+  // const savedTheme = localStorage.getItem('theme');
+  // if (savedTheme === 'dark') {
+  //   document.body.setAttribute('data-theme', 'dark');
+  //   const themeIcon = document.getElementById('theme-icon');
+  //   if (themeIcon) themeIcon.className = 'fas fa-sun';
+  // }
 });
 
-// Fixed Image Gallery App - Complete Implementation
+// Namespaced Image Gallery - Complete Implementation with Multiple Categories
 const ImageGalleryApp = {
   // Configuration
   config: {
     containerSelector: '.img-gallery-container',
     modalId: 'imgGalleryModal',
     zIndex: 10000,
-    //animationDelay: 50,
+    animationDelay: 50,
     swipeThreshold: 50
   },
 
   // Separate logos data collection
   logosData: [
     {
-      title: "Luna",
+      title: "Luna Logo",
       description: "Logo design for Luna e-wallet application with modern minimalist approach",
       image: "img/projects/luna/luna.jpg",
       project: "Luna"
     },
     {
-      title: "Hiraya", 
+      title: "Hiraya Logo", 
       description: "Creative logo design for Hiraya project featuring cultural elements",
       image: "img/projects/Hiraya/hiraya logo.png",
       project: "Hiraya"
     },
     {
-      title: "Invictus",
+      title: "Invictus Logo",
       description: "Professional logo design for Invictus project with bold typography", 
       image: "img/projects/invictus.png",
       project: "Invictus"
     },
     {
-      title: "Mellowdy",
-     description: "Playful logo design for Mellowdy sound learning application targeting preschool children",
-      image: "img/projects/mellowdy/melolog2.png",
-      project: "Invictus"
-    },
-    {
-      title: "Mellowdy",
+      title: "Mellowdy Logo",
       description: "Playful logo design for Mellowdy sound learning application targeting preschool children",
       image: "img/projects/mellowdy/melolog2.png",
-      project: ""
+      project: "Mellowdy"
     }
   ],
 
   // Main gallery data with multiple categories support
   galleryData: [
     {
-      title: "Luna E-Wallet",
+      title: "Luna",
       category: ["UI/UX Design"], 
       description: "Designed a mobile e-wallet application with integrated expense tracking features. Created wireframes, high-fidelity UI designs, and interactive prototypes using Figma. Developed user flows based on user research and feedback to ensure optimal user experience.",
       images: [
@@ -103,7 +103,7 @@ const ImageGalleryApp = {
       year: "2024"
     },
     {
-      title: "Aurelia E-Wallet",
+      title: "Aurelia",
       category: ["UI/UX Design"],
       description: "A modern UI/UX design for E-Wallet application featuring contemporary design principles and user-centered approach. Focus on accessibility, usability, and visual appeal with seamless user interactions.",
       images: [
@@ -118,7 +118,7 @@ const ImageGalleryApp = {
     },
     {
       title: "Student Research Center",
-      category: ["Networks"],
+      category: ["Networks", "System Administration"],
       description: "Comprehensive network infrastructure project involving installation and configuration of computers and networking hardware for a student research facility. Designed and implemented LAN setup across multiple rooms and buildings to ensure stable connectivity, security, and scalability.",
       images: [
         "img/projects/StudentCenter/src.jpg", 
@@ -146,11 +146,10 @@ const ImageGalleryApp = {
   getAllLogos() {
     return this.logosData.map(logo => ({
       title: logo.title,
-      category: ["Logo Design"],
+      category: ["Logo"],
       description: logo.description,
       images: [logo.image],
-      year: "2024",
-      technologies: ["Logo Design", "Branding"]
+      year: "2024"
     }));
   },
 
@@ -208,13 +207,13 @@ const ImageGalleryApp = {
     
     // Add Logo category if including logos
     if (this.includeLogos) {
-      categories.add("Logo Design");
+      categories.add("Logo");
     }
     
     return [...categories].sort();
   },
 
-  // Enhanced search functionality
+  // Search functionality with enhanced matching
   searchProjects(query) {
     if (!query || query.trim() === '') {
       return this.getCombinedData(this.includeLogos);
@@ -224,9 +223,13 @@ const ImageGalleryApp = {
     const combinedData = this.getCombinedData(this.includeLogos);
     
     return combinedData.filter(item => {
+      // Title matching
       const titleMatch = item.title.toLowerCase().includes(lowercaseQuery);
+      
+      // Description matching
       const descriptionMatch = item.description.toLowerCase().includes(lowercaseQuery);
       
+      // Category matching
       let categoryMatch = false;
       if (Array.isArray(item.category)) {
         categoryMatch = item.category.some(cat => 
@@ -236,6 +239,7 @@ const ImageGalleryApp = {
         categoryMatch = item.category.toLowerCase().includes(lowercaseQuery);
       }
       
+      // Technology matching (if available)
       let techMatch = false;
       if (item.technologies && Array.isArray(item.technologies)) {
         techMatch = item.technologies.some(tech => 
@@ -243,6 +247,7 @@ const ImageGalleryApp = {
         );
       }
       
+      // Year matching (if available)
       let yearMatch = false;
       if (item.year) {
         yearMatch = item.year.toString().includes(lowercaseQuery);
@@ -276,10 +281,9 @@ const ImageGalleryApp = {
       this.generateGallery();
       this.bindEvents();
       this.setupSearch();
-      this.setupTouchEvents();
       this.isInitialized = true;
       
-      console.log('ImageGalleryApp initialized successfully with', this.getCombinedData(includeLogos).length, 'items');
+      console.log('ImageGalleryApp initialized successfully');
     } catch (error) {
       console.error('Failed to initialize ImageGalleryApp:', error);
     }
@@ -323,7 +327,7 @@ const ImageGalleryApp = {
     const allButton = this.elements.categoryFilters.querySelector('[data-category="all"]');
     if (allButton) {
       allButton.addEventListener("click", () => this.filterGallery("all"));
-      allButton.classList.add("img-gallery-active");
+      allButton.classList.add("img-gallery-active"); // Set as default active
     }
     
     // Generate category buttons
@@ -344,7 +348,7 @@ const ImageGalleryApp = {
         'Web Applications': 'fas fa-globe',
         'Software Development': 'fas fa-laptop-code',
         'Mobile Development': 'fas fa-mobile-alt',
-        'Logo Design': 'fas fa-trademark',
+        'Logo': 'fas fa-trademark',
         'Branding': 'fas fa-copyright',
         'Networks': 'fas fa-network-wired',
         'System Administration': 'fas fa-server',
@@ -368,6 +372,7 @@ const ImageGalleryApp = {
       return;
     }
     
+    // Clear existing gallery
     this.elements.gallery.innerHTML = "";
     
     const dataToUse = this.getCombinedData(this.includeLogos);
@@ -383,8 +388,8 @@ const ImageGalleryApp = {
       
       // Handle multiple categories for data attributes
       if (Array.isArray(item.category)) {
-        div.dataset.category = item.category[0];
-        div.dataset.categories = item.category.join(',');
+        div.dataset.category = item.category[0]; // Primary category
+        div.dataset.categories = item.category.join(','); // All categories
       } else {
         div.dataset.category = item.category;
         div.dataset.categories = item.category;
@@ -426,6 +431,7 @@ const ImageGalleryApp = {
       } else {
         category.textContent = item.category;
       }
+      category.className = "img-gallery-category";
       
       // Additional info (year, tech count)
       const info = document.createElement("div");
@@ -438,8 +444,16 @@ const ImageGalleryApp = {
         info.appendChild(yearSpan);
       }
       
+      if (item.images && item.images.length > 1) {
+        const imageCount = document.createElement("span");
+        imageCount.innerHTML = `<i class="fas fa-images"></i> ${item.images.length}`;
+        imageCount.className = "img-gallery-count";
+        info.appendChild(imageCount);
+      }
+      
       // Append elements
       overlay.appendChild(title);
+      overlay.appendChild(category);
       if (info.children.length > 0) {
         overlay.appendChild(info);
       }
@@ -461,12 +475,14 @@ const ImageGalleryApp = {
     let searchTimeout;
     
     this.elements.searchInput.addEventListener("input", (e) => {
+      // Debounce search for better performance
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
         this.searchGallery(e.target.value);
       }, 300);
     });
     
+    // Clear search on escape key
     this.elements.searchInput.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         e.target.value = "";
@@ -500,10 +516,11 @@ const ImageGalleryApp = {
         item.classList.remove("img-gallery-hidden");
         visibleCount++;
         
+        // Staggered reveal animation
         setTimeout(() => {
           item.style.opacity = "1";
           item.style.transform = "translateY(0)";
-        }, index * this.config.animationDelay);
+        }, index * 50);
       } else {
         item.classList.add("img-gallery-hidden");
         item.style.opacity = "0";
@@ -511,8 +528,10 @@ const ImageGalleryApp = {
       }
     });
     
+    // Show/hide no results message
     this.updateNoResultsMessage(visibleCount, query);
     
+    // Reset category filter visual state if searching
     if (lowercaseQuery) {
       this.elements.categoryFilters?.querySelectorAll(".img-gallery-filter-btn").forEach(btn => {
         btn.classList.remove("img-gallery-active");
@@ -542,12 +561,14 @@ const ImageGalleryApp = {
     }
   },
 
-  // Filter gallery by category
+  // Filter gallery by category with enhanced animations
   filterGallery(category) {
+    // Clear search
     if (this.elements.searchInput) {
       this.elements.searchInput.value = "";
     }
     
+    // Update active button state
     this.elements.categoryFilters?.querySelectorAll(".img-gallery-filter-btn").forEach(btn => {
       btn.classList.remove("img-gallery-active");
     });
@@ -557,7 +578,9 @@ const ImageGalleryApp = {
       activeBtn.classList.add("img-gallery-active");
     }
     
+    // Filter gallery items with staggered animation
     const items = this.elements.gallery.querySelectorAll(".img-gallery-item");
+    let visibleCount = 0;
     
     items.forEach((item, index) => {
       const itemCategories = item.dataset.categories ? 
@@ -571,6 +594,7 @@ const ImageGalleryApp = {
           item.classList.remove("img-gallery-hidden");
           item.style.opacity = "1";
           item.style.transform = "translateY(0)";
+          visibleCount++;
         } else {
           item.classList.add("img-gallery-hidden");
           item.style.opacity = "0";
@@ -579,6 +603,7 @@ const ImageGalleryApp = {
       }, index * this.config.animationDelay);
     });
     
+    // Remove no results message when filtering
     setTimeout(() => {
       const noResults = this.elements.gallery.querySelector('.no-results');
       if (noResults) noResults.remove();
@@ -598,6 +623,7 @@ const ImageGalleryApp = {
       return;
     }
     
+    // Update modal content
     if (this.elements.modalTitle) {
       this.elements.modalTitle.textContent = item.title;
     }
@@ -605,6 +631,7 @@ const ImageGalleryApp = {
     if (this.elements.modalDescription) {
       let description = item.description;
       
+      // Add additional info if available
       if (item.technologies && item.technologies.length > 0) {
         description += `\n\nTechnologies used: ${item.technologies.join(', ')}`;
       }
@@ -616,15 +643,18 @@ const ImageGalleryApp = {
       this.elements.modalDescription.textContent = description;
     }
     
+    // Setup image carousel
     this.setupCarousel(item.images);
     
+    // Show modal
     if (this.elements.modal) {
       this.elements.modal.style.display = "block";
       document.body.style.overflow = "hidden";
       
-      setTimeout(() => {
+      // Add fade in animation
+      requestAnimationFrame(() => {
         this.elements.modal.classList.add("img-gallery-modal-open");
-      }, 10);
+      });
     }
   },
 
@@ -635,6 +665,7 @@ const ImageGalleryApp = {
       return;
     }
     
+    // Setup navigation dots
     if (this.elements.carouselDots) {
       this.elements.carouselDots.innerHTML = "";
       
@@ -642,6 +673,7 @@ const ImageGalleryApp = {
         images.forEach((_, index) => {
           const dot = document.createElement("span");
           dot.className = "img-gallery-dot";
+          dot.setAttribute('aria-label', `Go to image ${index + 1}`);
           if (index === 0) dot.classList.add("img-gallery-active");
           dot.addEventListener("click", () => this.showImage(index));
           this.elements.carouselDots.appendChild(dot);
@@ -649,6 +681,7 @@ const ImageGalleryApp = {
       }
     }
     
+    // Show/hide navigation buttons
     const showNavButtons = images.length > 1;
     if (this.elements.prevBtn) {
       this.elements.prevBtn.style.display = showNavButtons ? "block" : "none";
@@ -657,6 +690,7 @@ const ImageGalleryApp = {
       this.elements.nextBtn.style.display = showNavButtons ? "block" : "none";
     }
     
+    // Show first image
     this.showImage(0);
   },
 
@@ -673,16 +707,31 @@ const ImageGalleryApp = {
     this.currentImageIndex = imageIndex;
     
     if (this.elements.carouselImage) {
+      // Add loading state
       this.elements.carouselImage.style.opacity = "0.5";
+      this.elements.carouselImage.style.transform = "scale(0.95)";
       
-      this.elements.carouselImage.onload = () => {
+      // Preload image
+      const img = new Image();
+      img.onload = () => {
+        this.elements.carouselImage.src = img.src;
+        this.elements.carouselImage.alt = `${item.title} - Image ${imageIndex + 1}`;
+        
+        // Restore opacity and scale
         this.elements.carouselImage.style.opacity = "1";
+        this.elements.carouselImage.style.transform = "scale(1)";
       };
       
-      this.elements.carouselImage.src = item.images[imageIndex];
-      this.elements.carouselImage.alt = `${item.title} - Image ${imageIndex + 1}`;
+      img.onerror = () => {
+        console.error('Failed to load image:', item.images[imageIndex]);
+        this.elements.carouselImage.style.opacity = "1";
+        this.elements.carouselImage.style.transform = "scale(1)";
+      };
+      
+      img.src = item.images[imageIndex];
     }
     
+    // Update active dot
     if (this.elements.carouselDots) {
       this.elements.carouselDots.querySelectorAll(".img-gallery-dot").forEach((dot, index) => {
         dot.classList.toggle("img-gallery-active", index === imageIndex);
@@ -726,40 +775,6 @@ const ImageGalleryApp = {
     }
   },
 
-  // Setup touch events for mobile swipe support
-  setupTouchEvents() {
-    if (!this.elements.carouselImage) return;
-    
-    let startX = 0;
-    let startY = 0;
-    
-    this.elements.carouselImage.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-    }, { passive: true });
-    
-    this.elements.carouselImage.addEventListener('touchend', (e) => {
-      if (!startX || !startY) return;
-      
-      const endX = e.changedTouches[0].clientX;
-      const endY = e.changedTouches[0].clientY;
-      
-      const diffX = startX - endX;
-      const diffY = startY - endY;
-      
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > this.config.swipeThreshold) {
-        if (diffX > 0) {
-          this.nextImage();
-        } else {
-          this.previousImage();
-        }
-      }
-      
-      startX = 0;
-      startY = 0;
-    }, { passive: true });
-  },
-
   // Bind all event listeners
   bindEvents() {
     // Modal close button
@@ -793,171 +808,3 @@ const ImageGalleryApp = {
         }
       });
     }
-
-    // Keyboard navigation
-    document.addEventListener("keydown", (event) => {
-      if (this.elements.modal && this.elements.modal.style.display === "block") {
-        event.preventDefault();
-        
-        switch(event.key) {
-          case "Escape":
-            this.closeModal();
-            break;
-          case "ArrowLeft":
-            this.previousImage();
-            break;
-          case "ArrowRight":
-            this.nextImage();
-            break;
-          case " ": // Space bar
-            this.nextImage();
-            break;
-        }
-      }
-    });
-
-    // Mouse wheel navigation in modal
-    if (this.elements.modal) {
-      this.elements.modal.addEventListener('wheel', (e) => {
-        if (this.elements.modal.style.display === "block") {
-          e.preventDefault();
-          if (e.deltaY > 0) {
-            this.nextImage();
-          } else {
-            this.previousImage();
-          }
-        }
-      }, { passive: false });
-    }
-  },
-
-  // Utility method to refresh gallery
-  refresh() {
-    if (!this.isInitialized) {
-      console.warn('ImageGalleryApp not initialized');
-      return;
-    }
-    
-    this.generateFilters();
-    this.generateGallery();
-  },
-
-  // Method to add new project
-  addProject(project) {
-    if (!project || !project.title || !project.images) {
-      console.error('Invalid project data');
-      return;
-    }
-    
-    this.galleryData.push(project);
-    this.refresh();
-  },
-
-  // Method to remove project by title
-  removeProject(title) {
-    const index = this.galleryData.findIndex(item => 
-      item.title.toLowerCase() === title.toLowerCase()
-    );
-    
-    if (index !== -1) {
-      this.galleryData.splice(index, 1);
-      this.refresh();
-      return true;
-    }
-    
-    return false;
-  },
-
-  // Method to update project
-  updateProject(title, updatedData) {
-    const index = this.galleryData.findIndex(item => 
-      item.title.toLowerCase() === title.toLowerCase()
-    );
-    
-    if (index !== -1) {
-      this.galleryData[index] = { ...this.galleryData[index], ...updatedData };
-      this.refresh();
-      return true;
-    }
-    
-    return false;
-  },
-
-  // Get statistics
-  getStats() {
-    const stats = {
-      totalProjects: this.galleryData.length,
-      totalLogos: this.logosData.length,
-      categories: this.getAllCategories(),
-      totalImages: this.galleryData.reduce((total, item) => total + item.images.length, 0)
-    };
-    
-    return stats;
-  },
-
-  // Export data (for backup/sharing)
-  exportData() {
-    return {
-      galleryData: this.galleryData,
-      logosData: this.logosData,
-      config: this.config,
-      includeLogos: this.includeLogos
-    };
-  },
-
-  // Import data (for restore)
-  importData(data) {
-    if (data.galleryData) this.galleryData = data.galleryData;
-    if (data.logosData) this.logosData = data.logosData;
-    if (data.config) this.config = { ...this.config, ...data.config };
-    if (data.includeLogos !== undefined) this.includeLogos = data.includeLogos;
-    
-    this.refresh();
-  },
-
-  // Reset to original state
-  reset() {
-    this.currentGalleryIndex = 0;
-    this.currentImageIndex = 0;
-    this.closeModal();
-    
-    // Clear search
-    if (this.elements.searchInput) {
-      this.elements.searchInput.value = "";
-    }
-    
-    // Reset to "All" filter
-    this.filterGallery("all");
-  },
-
-  // Destroy the gallery (cleanup)
-  destroy() {
-    // Remove event listeners
-    document.removeEventListener("keydown", this.keydownHandler);
-    
-    // Clear DOM
-    if (this.elements.gallery) {
-      this.elements.gallery.innerHTML = "";
-    }
-    
-    if (this.elements.categoryFilters) {
-      this.elements.categoryFilters.innerHTML = "";
-    }
-    
-    // Reset state
-    this.isInitialized = false;
-    this.elements = {};
-    
-    console.log('ImageGalleryApp destroyed');
-  }
-};
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize gallery with logos included by default
-  ImageGalleryApp.init(true);
-  console.log('Gallery initialized successfully!');
-  
-  // Log stats for debugging
-  console.log('Gallery Stats:', ImageGalleryApp.getStats());
-});
