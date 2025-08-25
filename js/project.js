@@ -105,6 +105,18 @@ const ImageGalleryApp = {
       year: "2024"
     },
     {
+      title: "Attendo",
+      category: ["Software Development"],
+      description: "Attendo is a simple web-based attendance monitoring system developed using PHP and MySQL. It allows administrators to manage users, record attendance, and view attendance history in a clean dashboard interface. This project demonstrates basic CRUD operations, session management, and responsive design.",
+      images: [
+        "img/projects/Attendance/attendance Mockup.png",
+        "img/projects/Attendance/Web View attendance.png",
+        "img/projects/Attendance/mobile View attendance.png",
+      ],
+      technologies: ["Adobe Illustrator", "Branding", "Logo Design"],
+      year: "2024"
+    },
+    {
       title: "Student Research Center",
       category: ["Networks"],
       description: "Comprehensive network infrastructure project involving installation and configuration of computers and networking hardware for a student research facility. Designed and implemented LAN setup across multiple rooms and buildings to ensure stable connectivity, security, and scalability.",
@@ -152,6 +164,7 @@ const ImageGalleryApp = {
       technologies: ["Adobe Illustrator", "Branding", "Logo Design"],
       year: "2024"
     }
+    
   ],
 
   // Application state
