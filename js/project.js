@@ -57,9 +57,9 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
   }
 });
 
-// Updated Image Gallery App with your data
+// Updated Image Gallery App with GitHub buttons
 const ImageGalleryApp = {
-  // Updated gallery data with multiple categories support
+  // Updated gallery data with GitHub URLs
   galleryData: [
     {
       title: "Luna E-Wallet",
@@ -73,8 +73,11 @@ const ImageGalleryApp = {
         "img/projects/luna/Screenshot 2025-08-24 203759.png",
       ],
       technologies: ["Figma", "Adobe XD", "Prototyping"],
-      year: "2024"
+      year: "2024",
+      githubUrl: null, // Design project, no GitHub
+      liveUrl: null
     },
+    
     {
       title: "Mellowdy",
       category: ["UI/UX Design", "Software Development"],
@@ -85,11 +88,14 @@ const ImageGalleryApp = {
         "img/projects/mellowdy/Web 1366 – 1.png",
         "img/projects/mellowdy/Web 1366 – 2.png",
         "img/projects/mellowdy/Web 1366 – 3.png",
-        "img/projects/mellowdy/Web 1366 – 4.png", 
+        "img/projects/mellowdy/Web 1366 – 4.png"
       ],
       technologies: ["Figma", "React", "JavaScript", "Testing"],
-      year: "2024"
+      year: "2024",
+      githubUrl: "https://github.com/madrian31/Mellowdy.git",
+      liveUrl: null
     },
+
     {
       title: "Aurelia E-Wallet",
       category: ["UI/UX Design"],
@@ -102,7 +108,9 @@ const ImageGalleryApp = {
         "img/projects/Aurelia/wallet.png", 
       ],
       technologies: ["Figma", "Design Systems", "User Research"],
-      year: "2024"
+      year: "2024",
+      githubUrl: null, // Design project, no GitHub
+      liveUrl: null
     },
     {
       title: "Attendo",
@@ -113,8 +121,10 @@ const ImageGalleryApp = {
         "img/projects/Attendance/Web View attendance.png",
         "img/projects/Attendance/mobile View attendance.png",
       ],
-      technologies: ["Adobe Illustrator", "Branding", "Logo Design"],
-      year: "2024"
+      technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+      year: "2024",
+      githubUrl: "https://github.com/madrian31/Attendo.git",
+      liveUrl: null
     },
     {
       title: "Student Research Center",
@@ -128,27 +138,33 @@ const ImageGalleryApp = {
         "img/projects/StudentCenter/src topo.jpg", 
       ],
       technologies: ["Cisco", "Network Topology", "LAN Setup", "Hardware Configuration"],
-      year: "2024"
+      year: "2024",
+      githubUrl: null, // Network project, no GitHub
+      liveUrl: null
     },
     {
       title: "Invictus",
       category: ["Logo Design"],
-      description: "Null",
+      description: "A powerful and bold logo design for Invictus brand, embodying strength, victory, and resilience. Created with modern design principles and strong visual impact.",
       images: [
          "img/projects/invictus.png", 
       ],
       technologies: ["Adobe Illustrator", "Branding", "Logo Design"],
-      year: "2024"
+      year: "2024",
+      githubUrl: null, // Design project, no GitHub
+      liveUrl: null
     },
     {
       title: "Hiraya",
       category: ["Logo Design"],
-      description: "Null",
+      description: "An elegant and meaningful logo design for Hiraya, representing dreams, aspirations, and Filipino heritage. Crafted with cultural significance and modern aesthetics.",
       images: [
         "img/projects/Hiraya/HirayaLogo.png"
       ],
       technologies: ["Adobe Illustrator", "Branding", "Logo Design"],
-      year: "2024"
+      year: "2024",
+      githubUrl: null, // Design project, no GitHub
+      liveUrl: null
     },
     {
       title: "Lunarity",
@@ -162,7 +178,9 @@ const ImageGalleryApp = {
         "img/projects/Lunarity/Asset 7.png",
       ],
       technologies: ["Adobe Illustrator", "Branding", "Logo Design"],
-      year: "2024"
+      year: "2024",
+      githubUrl: null, // Design project, no GitHub
+      liveUrl: null
     }
     
   ],
@@ -327,9 +345,23 @@ const ImageGalleryApp = {
         category.textContent = item.category;
       }
       
-      // Append elements
-      overlay.appendChild(title);
-      overlay.appendChild(category);
+      // GitHub button (only if githubUrl exists)
+      if (item.githubUrl) {
+        const githubBtn = document.createElement("a");
+        githubBtn.href = item.githubUrl;
+        githubBtn.target = "_blank";
+        githubBtn.rel = "noopener noreferrer";
+        githubBtn.className = "github-btn";
+        githubBtn.innerHTML = `<i class="bi bi-github"></i>View Code`;
+        githubBtn.onclick = (e) => e.stopPropagation(); // Prevent modal from opening when clicking GitHub button
+        
+        overlay.appendChild(title);
+        overlay.appendChild(category);
+        overlay.appendChild(githubBtn);
+      } else {
+        overlay.appendChild(title);
+        overlay.appendChild(category);
+      }
       
       div.appendChild(img);
       div.appendChild(overlay);
@@ -383,17 +415,24 @@ const ImageGalleryApp = {
     }
     
     if (this.elements.modalDescription) {
-      let description = item.description;
+      let descriptionHTML = `<p>${item.description}</p>`;
       
       if (item.technologies && item.technologies.length > 0) {
-        description += `\n\nTechnologies used: ${item.technologies.join(', ')}`;
+        descriptionHTML += `<p><strong>Technologies used:</strong> ${item.technologies.join(', ')}</p>`;
       }
       
       if (item.year) {
-        description += `\n\nYear: ${item.year}`;
+        descriptionHTML += `<p><strong>Year:</strong> ${item.year}</p>`;
       }
       
-      this.elements.modalDescription.textContent = description;
+      // Add GitHub button in modal if URL exists
+      if (item.githubUrl) {
+        descriptionHTML += `<a href="${item.githubUrl}" target="_blank" rel="noopener noreferrer" class="modal-github-btn">
+          <i class="bi bi-github"></i>View on GitHub
+        </a>`;
+      }
+      
+      this.elements.modalDescription.innerHTML = descriptionHTML;
     }
     
     this.setupCarousel(item.images);
