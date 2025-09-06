@@ -139,7 +139,7 @@ const ImageGalleryApp = {
       ],
       technologies: ["Cisco", "Network Topology", "LAN Setup", "Hardware Configuration"],
       year: "2024",
-      githubUrl: null, // Network project, no GitHub
+      githubUrl: "https://github.com/madrian31/Attendo.git", 
       liveUrl: null
     },
     {
