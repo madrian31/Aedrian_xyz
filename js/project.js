@@ -181,6 +181,24 @@ const ImageGalleryApp = {
       year: "2024",
       githubUrl: null, // Design project, no GitHub
       liveUrl: null
+    },
+
+    {
+      title: "Minimalist Branding with QR Integration",
+      category: ["Graphic Design"],
+      description: "A sleek and professional business card mockup showcasing a bold geometric logo and a functional QR code for instant digital access. The minimalist grayscale palette conveys sophistication, while the textured background adds depth and a modern aesthetic.",
+      images: [
+        "img/projects/BusinessCard/BusinessCard.png",
+        "img/projects/BusinessCard/PaperAndBusinessCardMockupWithPaperClip.png",
+        "img/projects/BusinessCard/StylishBusinessCard.png",
+        "img/projects/BusinessCard/RealisticBusinessCard.png",
+        "img/projects/BusinessCard/Artboard1.png",
+        "img/projects/BusinessCard/Artboard1copy.png",
+      ],
+      technologies: ["Adobe Illustrator","Adobe Photoshop", "Branding", "Logo Design"],
+      year: "2025",
+      githubUrl: null, // Design project, no GitHub
+      liveUrl: null
     }
     
   ],
