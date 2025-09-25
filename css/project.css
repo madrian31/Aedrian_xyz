@@ -1,4 +1,51 @@
-/* Projects Section Styles with GitHub Integration and Fixed Image Display */
+/* ========== PROJECTS SECTION - COMPLETE CSS ========== */
+
+/* Main Projects Section Container */
+.projects-section {
+  max-width: 1200px;
+  overflow: hidden;
+  margin: 40px auto;
+  background: var(--bg-elevated);
+  padding: 80px 40px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.light-theme .projects-section {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Projects Title & Subtitle */
+.projects-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.projects-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+.projects-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
 
 /* Filter Buttons */
 .img-gallery-filters {
@@ -426,83 +473,6 @@
   transform: scale(1.1);
 }
 
-/* Contact Form */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  background: var(--bg-higher);
-  padding: 2rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.8rem;
-  background: var(--bg-elevated);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  color: var(--text-color);
-  font-family: inherit;
-  transition: var(--transition);
-  box-sizing: border-box;
-}
-
-.light-theme .form-group input,
-.light-theme .form-group textarea {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(138, 99, 255, 0.2);
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 1rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(138, 99, 255, 0.4);
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 2rem;
-  background: var(--bg-elevated);
-  color: var(--text-muted);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.light-theme .footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
 /* Light Theme GitHub Button Adjustments */
 .light-theme .github-btn,
 .light-theme .modal-github-btn {
@@ -571,9 +541,36 @@
     min-height: 450px;
   }
 }
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 60px 24px;
+    margin: 20px;
+  }
+
+  .img-gallery-grid {
+     grid-template-columns: unset; /* babalik sa global */
+    gap: 1.5rem;
+  }
+
+}
+
 
 /* Tablet Landscape (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
+  .projects-section {
+    padding: 60px 24px;
+    margin: 20px;
+  }
+
+  .projects-title {
+    font-size: 2.2rem;
+  }
+
+  .projects-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
   .img-gallery-modal-content {
     flex-direction: column;
     height: 90vh;
@@ -651,6 +648,14 @@
 
 /* Mobile Landscape (426px - 480px) */
 @media (min-width: 426px) and (max-width: 480px) {
+  .projects-section {
+    padding: 40px 16px;
+  }
+
+  .projects-title {
+    font-size: 1.8rem;
+  }
+
   .img-gallery-carousel-image {
     height: 70%;
     max-height: 50vh;
