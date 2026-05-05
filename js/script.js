@@ -336,11 +336,9 @@ const navLinksArray = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
   let current = '';
-  
+
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    
     if (window.scrollY >= sectionTop - 200) {
       current = section.getAttribute('id');
     }
@@ -352,6 +350,7 @@ window.addEventListener('scroll', () => {
       link.classList.add('active');
     }
   });
+
 });
 
 // Set current year in footer

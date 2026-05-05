@@ -280,16 +280,32 @@ body {
 .nav-toggle {
   display: none;
   flex-direction: column;
+  align-items: center;
   gap: 6px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 12px;
+  padding: 10px 12px 8px;
   z-index: 1001;
   position: relative;
   border-radius: 8px;
   transition: var(--transition);
   overflow: hidden;
+}
+
+.nav-toggle::after {
+  content: 'Menu';
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-color);
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.nav-toggle.active::after {
+  content: 'Close';
+  color: var(--primary-color);
 }
 
 .nav-toggle:hover {
@@ -765,3 +781,4 @@ body {
 .no-scroll {
   overflow: hidden;
 }
+
