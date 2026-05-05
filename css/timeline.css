@@ -200,6 +200,44 @@
   border: 1px solid rgba(138, 99, 255, 0.15);
 }
 
+.timeline-item.timeline-collapsed {
+  display: none !important;
+}
+
+.timeline-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  background: var(--bg-higher);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.light-theme .timeline-toggle-btn {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.timeline-toggle-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(138, 99, 255, 0.3);
+}
+
 /* Desktop specific spacing - Added this new media query */
 @media (min-width: 769px) {
   .timeline-item {

@@ -231,6 +231,50 @@
   line-height: 1.6;
 }
 
+.interest-item.interest-collapsed {
+  display: none !important;
+}
+
+.interests-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.interests-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  background: var(--bg-higher);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.light-theme .interests-toggle-btn {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.interests-toggle-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(138, 99, 255, 0.3);
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon.rotated {
+  transform: rotate(180deg);
+}
+
 /* Icon colors for interests */
 .interest-item[data-interest="coding"] .interest-icon { color: #61dafb; }
 .interest-item[data-interest="design"] .interest-icon { color: #ff6b6b; }

@@ -41,13 +41,14 @@ const timelineData = [
 
 // Function to create timeline HTML
 function createTimelineHTML() {
+  const VISIBLE_COUNT = 2;
   const timelineContainer = document.getElementById('timelineItems');
   if (!timelineContainer) return;
 
   timelineData.forEach((item, index) => {
     const timelineItem = document.createElement('div');
-    timelineItem.className = 'timeline-item';
-    
+    timelineItem.className = `timeline-item${index >= VISIBLE_COUNT ? ' timeline-extra timeline-collapsed' : ''}`;
+
     timelineItem.innerHTML = `
       <div class="timeline-marker"></div>
       <div class="timeline-content">
@@ -60,9 +61,36 @@ function createTimelineHTML() {
         </div>
       </div>
     `;
-    
+
     timelineContainer.appendChild(timelineItem);
   });
+
+  if (timelineData.length > VISIBLE_COUNT) {
+    const toggleWrapper = document.createElement('div');
+    toggleWrapper.className = 'timeline-toggle-wrapper';
+    toggleWrapper.innerHTML = `
+      <button class="timeline-toggle-btn" id="timelineToggleBtn">
+        <span>Show More</span>
+        <i class="bi bi-chevron-down toggle-icon"></i>
+      </button>
+    `;
+    timelineContainer.appendChild(toggleWrapper);
+
+    let expanded = false;
+    document.getElementById('timelineToggleBtn').addEventListener('click', () => {
+      expanded = !expanded;
+      const extraItems = document.querySelectorAll('.timeline-extra');
+      extraItems.forEach(item => {
+        item.classList.toggle('timeline-collapsed', !expanded);
+        if (expanded) {
+          setTimeout(() => item.classList.add('animate'), 50);
+        }
+      });
+      const btn = document.getElementById('timelineToggleBtn');
+      btn.querySelector('span').textContent = expanded ? 'Show Less' : 'Show More';
+      btn.querySelector('.toggle-icon').classList.toggle('rotated', expanded);
+    });
+  }
 }
 
 // Function to animate timeline items on scroll

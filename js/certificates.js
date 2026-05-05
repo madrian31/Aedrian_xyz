@@ -83,11 +83,52 @@ function initializeCertificates() {
 
 // Create certificates grid
 function createCertificatesGrid() {
-  // Sort certificates by date (newest first)
+  const VISIBLE_COUNT = 1;
   const sortedCertificates = [...certificatesData.certificates].sort((a, b) => new Date(b.date) - new Date(a.date));
-  
+
   const certificatesHTML = sortedCertificates.map(cert => createCertificateCard(cert)).join('');
   certificatesGrid.innerHTML = certificatesHTML;
+
+  const cards = certificatesGrid.querySelectorAll('.certificate-card');
+  cards.forEach((card, index) => {
+    if (index >= VISIBLE_COUNT) {
+      card.classList.add('cert-extra', 'cert-collapsed');
+    }
+  });
+
+  const existing = document.querySelector('.cert-toggle-wrapper');
+  if (existing) existing.remove();
+
+  if (sortedCertificates.length > VISIBLE_COUNT) {
+    const toggleWrapper = document.createElement('div');
+    toggleWrapper.className = 'cert-toggle-wrapper';
+    toggleWrapper.innerHTML = `
+      <button class="cert-toggle-btn" id="certToggleBtn">
+        <span>Show More</span>
+        <i class="bi bi-chevron-down toggle-icon"></i>
+      </button>
+    `;
+    certificatesGrid.insertAdjacentElement('afterend', toggleWrapper);
+
+    let expanded = false;
+    document.getElementById('certToggleBtn').addEventListener('click', () => {
+      expanded = !expanded;
+      document.querySelectorAll('.cert-extra').forEach((card, i) => {
+        card.classList.toggle('cert-collapsed', !expanded);
+        if (expanded) {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+          card.style.animation = 'none';
+          setTimeout(() => {
+            card.style.animation = `slideInUp 0.6s ease ${i * 100}ms forwards`;
+          }, 50);
+        }
+      });
+      const btn = document.getElementById('certToggleBtn');
+      btn.querySelector('span').textContent = expanded ? 'Show Less' : 'Show More';
+      btn.querySelector('.toggle-icon').classList.toggle('rotated', expanded);
+    });
+  }
 }
 
 // Create certificate card

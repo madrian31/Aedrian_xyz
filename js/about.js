@@ -28,12 +28,11 @@ const aboutData = {
       title: "UI/UX Design",
       description: "Creating user-centered designs that are both beautiful and functional."
     },
-    
-    { 
-      key: "music",
-      icon: "bi-music-note-beamed",
-      title: "Music",
-      description: "Listening to music while coding and finding inspiration in melodies."
+    {
+      key: "ai",
+      icon: "bi-robot",
+      title: "AI & Machine Learning",
+      description: "Exploring artificial intelligence and integrating AI tools into modern workflows."
     },
     {
       key: "photography",
@@ -42,17 +41,12 @@ const aboutData = {
       description: "Capturing moments and exploring visual composition and storytelling."
     },
     {
-      key: "ai",
-      icon: "bi-robot",
-      title: "AI & Machine Learning",
-      description: "Exploring artificial intelligence and integrating AI tools into modern workflows."
-    },
-    {
       key: "learning",
       icon: "bi-book",
       title: "Learning",
       description: "Continuously expanding knowledge in technology and creative fields."
     },
+    
   ]
 };
 
@@ -87,22 +81,47 @@ function createStatsSection() {
 
 // Create interests section
 function createInterestsSection() {
+  const VISIBLE_COUNT = 3;
+  const hasMore = aboutData.interests.length > VISIBLE_COUNT;
+
   const interestsHTML = `
     <div class="interests-header">
       <h3>What I'm Passionate About</h3>
       <p>Beyond coding and design, here are some things that inspire and motivate me</p>
     </div>
     <div class="interests-grid">
-      ${aboutData.interests.map(interest => `
-        <div class="interest-item" data-interest="${interest.key}">
+      ${aboutData.interests.map((interest, index) => `
+        <div class="interest-item${index >= VISIBLE_COUNT ? ' interest-extra interest-collapsed' : ''}" data-interest="${interest.key}">
           <i class="${interest.icon} interest-icon"></i>
           <h4 class="interest-title">${interest.title}</h4>
           <p class="interest-description">${interest.description}</p>
         </div>
       `).join('')}
     </div>
+    ${hasMore ? `
+      <div class="interests-toggle-wrapper">
+        <button class="interests-toggle-btn" id="interestsToggleBtn">
+          <span>Show More</span>
+          <i class="bi bi-chevron-down toggle-icon"></i>
+        </button>
+      </div>
+    ` : ''}
   `;
   aboutInterests.innerHTML = interestsHTML;
+
+  if (hasMore) {
+    const toggleBtn = document.getElementById('interestsToggleBtn');
+    let expanded = false;
+
+    toggleBtn.addEventListener('click', () => {
+      expanded = !expanded;
+      document.querySelectorAll('.interest-extra').forEach(item => {
+        item.classList.toggle('interest-collapsed', !expanded);
+      });
+      toggleBtn.querySelector('span').textContent = expanded ? 'Show Less' : 'Show More';
+      toggleBtn.querySelector('.toggle-icon').classList.toggle('rotated', expanded);
+    });
+  }
 }
 
 // Animate number counting
