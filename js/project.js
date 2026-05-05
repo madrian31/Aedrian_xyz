@@ -433,23 +433,33 @@ const ImageGalleryApp = {
     }
     
     if (this.elements.modalDescription) {
-      let descriptionHTML = `<p>${item.description}</p>`;
-      
+      let descriptionHTML = `<p class="modal-desc-text">${item.description}</p>`;
+
       if (item.technologies && item.technologies.length > 0) {
-        descriptionHTML += `<p><strong>Technologies used:</strong> ${item.technologies.join(', ')}</p>`;
+        descriptionHTML += `
+          <div class="modal-section">
+            <span class="modal-section-label"><i class="bi bi-code-slash"></i> Technologies</span>
+            <div class="modal-tech-tags">
+              ${item.technologies.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('')}
+            </div>
+          </div>`;
       }
-      
+
       if (item.year) {
-        descriptionHTML += `<p><strong>Year:</strong> ${item.year}</p>`;
+        descriptionHTML += `
+          <div class="modal-section">
+            <span class="modal-section-label"><i class="bi bi-calendar3"></i> Year</span>
+            <span class="modal-year-badge">${item.year}</span>
+          </div>`;
       }
-      
-      // Add GitHub button in modal if URL exists
+
       if (item.githubUrl) {
-        descriptionHTML += `<a href="${item.githubUrl}" target="_blank" rel="noopener noreferrer" class="modal-github-btn">
-          <i class="bi bi-github"></i>View on GitHub
-        </a>`;
+        descriptionHTML += `
+          <a href="${item.githubUrl}" target="_blank" rel="noopener noreferrer" class="modal-github-btn">
+            <i class="bi bi-github"></i>View on GitHub
+          </a>`;
       }
-      
+
       this.elements.modalDescription.innerHTML = descriptionHTML;
     }
     
@@ -471,6 +481,12 @@ const ImageGalleryApp = {
       console.error('No images provided for carousel');
       return;
     }
+
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const hasMultiple = images.length > 1;
+    if (prevBtn) prevBtn.style.display = hasMultiple ? 'flex' : 'none';
+    if (nextBtn) nextBtn.style.display = hasMultiple ? 'flex' : 'none';
     
     if (this.elements.carouselDots) {
       this.elements.carouselDots.innerHTML = "";
@@ -561,6 +577,12 @@ const ImageGalleryApp = {
         this.closeModal();
       });
     }
+
+    // Carousel arrow buttons
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); this.previousImage(); });
+    if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); this.nextImage(); });
 
     // Click outside modal to close
     if (this.elements.modal) {
