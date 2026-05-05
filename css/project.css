@@ -180,7 +180,7 @@
 }
 
 .img-gallery-hidden {
-  display: none;
+  display: none !important;
 }
 
 /* GitHub Button Styles for Gallery Cards */
