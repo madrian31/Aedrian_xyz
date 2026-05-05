@@ -4,48 +4,48 @@ const skillsData = {
     title: "Core Technologies",
     description: "My primary programming languages and technologies",
     skills: [
-      { name: "HTML5", icon: "bi-filetype-html", key: "html" },
-      { name: "CSS3", icon: "bi-filetype-css", key: "css" },
-      { name: "SCSS/Sass", icon: "bi-filetype-scss", key: "scss" }, // ADDED
-      { name: "JavaScript", icon: "bi-filetype-js", key: "javascript" },
-      { name: "PHP", icon: "bi-filetype-php", key: "php" },
-      { name: "C#", icon: "bi-hash", key: "csharp" },
-      { name: "Java", icon: "bi-cup-hot", key: "java" }, // ADDED
-      { name: "Python", icon: "bi-filetype-py", key: "python" },
-      { name: "SQL", icon: "bi-database", key: "mysql" }
+      { name: "HTML5", icon: "fa-brands fa-html5", key: "html" },
+      { name: "CSS3", icon: "fa-brands fa-css3-alt", key: "css" },
+      { name: "SCSS/Sass", icon: "fa-brands fa-sass", key: "scss" },
+      { name: "JavaScript", icon: "fa-brands fa-js", key: "javascript" },
+      { name: "PHP", icon: "fa-brands fa-php", key: "php" },
+      { name: "C#", icon: "fa-solid fa-hashtag", key: "csharp" },
+      { name: "Java", icon: "fa-brands fa-java", key: "java" },
+      { name: "Python", icon: "fa-brands fa-python", key: "python" },
+      { name: "SQL", icon: "fa-solid fa-database", key: "mysql" }
     ]
   },
   frameworks: {
     title: "Frameworks & Patterns",
     description: "Architectural patterns and frameworks I work with",
     skills: [
-      { name: "React", icon: "bi-bootstrap", key: "react" },
-      { name: "MVC Pattern", icon: "bi-diagram-3", key: "mvc" },
-      { name: ".NET", icon: "bi-microsoft", key: "dotnet" },
-      { name: "Bootstrap", icon: "bi-bootstrap-fill", key: "bootstrap" },
-      { name: "jQuery", icon: "bi-code-square", key: "jquery" }
+      { name: "React", icon: "fa-brands fa-react", key: "react" },
+      { name: "MVC Pattern", icon: "fa-solid fa-sitemap", key: "mvc" },
+      { name: ".NET", icon: "fa-brands fa-microsoft", key: "dotnet" },
+      { name: "Bootstrap", icon: "fa-brands fa-bootstrap", key: "bootstrap" },
+      { name: "jQuery", icon: "devicon-jquery-plain", key: "jquery" }
     ]
   },
   tools: {
     title: "Tools & Platforms",
     description: "Development tools and software I use daily",
     skills: [
-      { name: "GitHub", icon: "bi-github", key: "github" },
-      { name: "VS Code", icon: "bi-code-slash", key: "vscode" },
-      { name: "Jira", icon: "bi-kanban", key: "jira" },
-      { name: "Figma", icon: "bi-ui-radios", key: "figma" },
-      { name: "Photoshop", icon: "bi-image", key: "photoshop" },
-      { name: "Illustrator", icon: "bi-vector-pen", key: "illustrator" },
-      { name: "Xampp", icon: "bi-server", key: "xampp" }
+      { name: "GitHub", icon: "fa-brands fa-github", key: "github" },
+      { name: "VS Code", icon: "fa-solid fa-code", key: "vscode" },
+      { name: "Jira", icon: "fa-brands fa-atlassian", key: "jira" },
+      { name: "Figma", icon: "fa-brands fa-figma", key: "figma" },
+      { name: "Photoshop", icon: "fa-solid fa-paintbrush", key: "photoshop" },
+      { name: "Illustrator", icon: "fa-solid fa-pen-nib", key: "illustrator" },
+      { name: "Xampp", icon: "fa-solid fa-server", key: "xampp" }
     ]
   },
   automation: {
     title: "Automation & Integration",
     description: "Workflow automation and system integration tools",
     skills: [
-      { name: "n8n", icon: "bi-workflow", key: "n8n" },
-      { name: "API Integration", icon: "bi-plug", key: "api" },
-      { name: "Webhooks", icon: "bi-arrow-left-right", key: "webhooks" }
+      { name: "n8n", icon: "fa-solid fa-diagram-project", key: "n8n" },
+      { name: "API Integration", icon: "fa-solid fa-plug", key: "api" },
+      { name: "Webhooks", icon: "fa-solid fa-code-branch", key: "webhooks" }
     ]
   }
 };
