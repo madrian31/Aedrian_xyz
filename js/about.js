@@ -7,7 +7,8 @@ const aboutData = {
     "With a background in Information Technology, I combine development, intuitive design, and AI-assisted workflows to create user-focused solutions.",
     "Always eager to learn, collaborate, and grow through technology."
   ]
-},
+}, 
+
   stats: [
     //ucomment this line in about css /*grid-template-columns: repeat(2, 1fr);*/
     //{ number: 10, label: "Projects Completed", suffix: "+" },
