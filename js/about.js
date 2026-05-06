@@ -1,13 +1,13 @@
 // About section data
 const aboutData = {
   bio: {
-    title: "Hello, I'm Marc Adrian",
-    paragraphs: [
-      "I'm a passionate <span class='highlight'>UI/UX Designer</span>, <span class='highlight'>Junior Programmer</span>, and <span class='highlight'>AI Enthusiast</span> creating beautiful and functional digital experiences.",
-      "With a degree in <span class='highlight'>Information Technology</span>, I blend clean code, intuitive design, and AI tools to craft meaningful solutions.",
-      "Always eager to learn, collaborate, and push the limits of technology."
-    ]
-  },
+  title: "Hello, I'm Marc Adrian",
+  paragraphs: [
+    "I <span class='highlight'>design and build</span> clean, functional, and meaningful digital experiences.",
+    "With a background in Information Technology, I combine development, intuitive design, and AI-assisted workflows to create user-focused solutions.",
+    "Always eager to learn, collaborate, and grow through technology."
+  ]
+},
   stats: [
     //ucomment this line in about css /*grid-template-columns: repeat(2, 1fr);*/
     //{ number: 10, label: "Projects Completed", suffix: "+" },
