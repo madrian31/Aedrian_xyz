@@ -454,6 +454,30 @@ body {
   letter-spacing: 0.5px;
 }
 
+.hire-me-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(138, 99, 255, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.hire-me-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(138, 99, 255, 0.55);
+  color: #fff;
+  text-decoration: none;
+}
+
 .social-media {
   display: flex;
   justify-content: center;

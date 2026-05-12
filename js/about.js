@@ -3,9 +3,9 @@ const aboutData = {
   bio: {
     title: "Hello, I'm Marc Adrian",
     paragraphs: [
-      "I <span class='highlight'>design and build</span> clean, functional, and meaningful digital experiences.",
-      "With a background in Information Technology, I combine <span class='highlight'>development, intuitive design, and AI-assisted workflows</span> to create user-focused solutions.",
-      "Great things happen when creativity, technology, and people work together."
+      "I <span class='highlight'>design and build complete digital products</span> — from UI/UX design to working web systems.",
+      "I've worked on real client projects, built functional web apps, and even designed a full business framework for an organization.",
+      "I help <span class='highlight'>businesses and startups</span> create digital experiences that look professional and actually work."
     ]
   },
 

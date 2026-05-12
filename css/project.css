@@ -300,6 +300,7 @@
   padding: 2.5rem 2rem;
   overflow-y: auto;
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -312,6 +313,8 @@
   background: var(--bg-color);
   position: relative;
   min-height: 0;
+  min-width: 0;
+  overflow: hidden;
   border-left: 1px solid rgba(255, 255, 255, 0.05);
 }
 
