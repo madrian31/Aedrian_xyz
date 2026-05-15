@@ -83,7 +83,13 @@ function initializeCertificates() {
 
 // Create certificates grid
 function createCertificatesGrid() {
-  const VISIBLE_COUNT = 1;
+  const getVisibleCount = () => {
+    if (window.matchMedia('(max-width: 768px)').matches) return 1;
+    if (window.matchMedia('(max-width: 1024px)').matches) return 2;
+    return 3;
+  };
+
+  const VISIBLE_COUNT = getVisibleCount();
   const sortedCertificates = [...certificatesData.certificates].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const certificatesHTML = sortedCertificates.map(cert => createCertificateCard(cert)).join('');
