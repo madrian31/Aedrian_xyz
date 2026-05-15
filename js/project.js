@@ -76,7 +76,7 @@ const ImageGalleryApp = {
       year: "2024",
       githubUrl: null, // Design project, no GitHub
       liveUrl: null,
-      pdfUrl: "img/projects/luna/luna-documentation.pdf" // Add your PDF file here
+      pdfUrl: "pdfs/Luna_Case_Study.pdf" // Add your PDF file here
     },
     
     {
@@ -458,6 +458,13 @@ const ImageGalleryApp = {
         descriptionHTML += `
           <a href="${item.githubUrl}" target="_blank" rel="noopener noreferrer" class="modal-github-btn">
             <i class="bi bi-github"></i>View on GitHub
+          </a>`;
+      }
+
+      if (item.pdfUrl) {
+        descriptionHTML += `
+          <a href="${item.pdfUrl}" target="_blank" rel="noopener noreferrer" class="modal-pdf-btn">
+            <i class="bi bi-file-pdf"></i>Download Documentation
           </a>`;
       }
 
