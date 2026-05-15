@@ -256,6 +256,7 @@ const ImageGalleryApp = {
       carouselDots: document.getElementById("imgGalleryCarouselDots"),
       pdfContainer: document.getElementById("imgGalleryPdfContainer"),
       pdfViewer: document.getElementById("imgGalleryPdfViewer"),
+      modalFooter: document.getElementById("imgGalleryModalFooter"),
       closeBtn: document.querySelector(".img-gallery-close")
     };
     
@@ -492,7 +493,22 @@ const ImageGalleryApp = {
 
       this.elements.modalDescription.innerHTML = descriptionHTML;
     }
-    
+
+    // Mark modal-content for CSS targeting (doc-only vs image project)
+    const modalContent = this.elements.modal?.querySelector('.img-gallery-modal-content');
+    if (modalContent) {
+      if (!item.images || item.images.length === 0) {
+        modalContent.classList.add('img-gallery-modal-doc-only');
+      } else {
+        modalContent.classList.remove('img-gallery-modal-doc-only');
+      }
+    }
+
+    // Footer: always hidden — inline PDF btn in description handles mobile download
+    if (this.elements.modalFooter) {
+      this.elements.modalFooter.style.display = 'none';
+    }
+
     this.setupCarousel(item.images);
     
     if (this.elements.modal) {
