@@ -257,9 +257,10 @@ const ImageGalleryApp = {
       pdfContainer: document.getElementById("imgGalleryPdfContainer"),
       pdfViewer: document.getElementById("imgGalleryPdfViewer"),
       modalFooter: document.getElementById("imgGalleryModalFooter"),
-      closeBtn: document.querySelector(".img-gallery-close")
+      closeBtn: document.querySelector(".img-gallery-close"),
+      imageCounter: document.getElementById('imgGalleryImageCounter')
     };
-    
+
     // Validate required elements
     const requiredElements = ['gallery'];
     const missingElements = requiredElements.filter(key => !this.elements[key]);
@@ -541,6 +542,9 @@ const ImageGalleryApp = {
       if (this.elements.carouselDots) {
         this.elements.carouselDots.style.display = 'none';
       }
+      if (this.elements.imageCounter) {
+        this.elements.imageCounter.classList.remove('visible');
+      }
       // Show PDF viewer if available
       if (item && item.pdfUrl && this.elements.pdfContainer && this.elements.pdfViewer) {
         this.elements.pdfViewer.src = item.pdfUrl;
@@ -607,6 +611,16 @@ const ImageGalleryApp = {
         dot.classList.toggle("img-gallery-active", index === imageIndex);
       });
     }
+
+    if (this.elements.imageCounter) {
+      const total = item.images.length;
+      if (total > 1) {
+        this.elements.imageCounter.textContent = `${imageIndex + 1} / ${total}`;
+        this.elements.imageCounter.classList.add('visible');
+      } else {
+        this.elements.imageCounter.classList.remove('visible');
+      }
+    }
   },
 
   // Navigate to previous image
@@ -666,6 +680,26 @@ const ImageGalleryApp = {
           this.closeModal();
         }
       });
+    }
+
+    // Touch swipe for carousel
+    const carouselContainer = document.querySelector('.img-gallery-carousel-container');
+    if (carouselContainer) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      carouselContainer.addEventListener('touchend', (e) => {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+          deltaX < 0 ? this.nextImage() : this.previousImage();
+        }
+      }, { passive: true });
     }
 
     // Keyboard navigation

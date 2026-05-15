@@ -588,6 +588,21 @@
     0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
+/* Image Counter */
+.img-gallery-image-counter {
+  display: none;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  padding: 0.4rem 0 0;
+}
+
+.img-gallery-image-counter.visible {
+  display: block;
+}
+
 /* Enhanced Carousel Dots */
 .img-gallery-carousel-dots {
   display: flex;
