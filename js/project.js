@@ -75,7 +75,8 @@ const ImageGalleryApp = {
       technologies: ["Figma", "Adobe XD", "Prototyping"],
       year: "2024",
       githubUrl: null, // Design project, no GitHub
-      liveUrl: null
+      liveUrl: null,
+      pdfUrl: "img/projects/luna/luna-documentation.pdf" // Add your PDF file here
     },
     
     {
