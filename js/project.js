@@ -200,6 +200,18 @@ const ImageGalleryApp = {
       year: "2025",
       githubUrl: null, // Design project, no GitHub
       liveUrl: null
+    },
+
+    {
+      title: "Financial Strategy — Business & Income Department",
+      category: ["Business Strategy", "Documentation"],
+      description: "Comprehensive financial strategy and operational framework for establishing a sustainable income department. Includes organizational structure, capital formation, budget allocation, burn rate analysis, income strategies, and performance metrics. Developed with detailed planning for Charter Members, team allowances, and risk management.",
+      images: [],
+      technologies: ["Financial Planning", "Business Strategy", "Organizational Development", "Risk Management"],
+      year: "2026",
+      githubUrl: null,
+      liveUrl: null,
+      pdfUrl: "pdfs/Financial-Strategy-Business-Income-Department.pdf"
     }
     
   ],
@@ -485,9 +497,17 @@ const ImageGalleryApp = {
 
   // Setup image carousel in modal
   setupCarousel(images) {
+    const carouselContainer = document.querySelector('.img-gallery-carousel-container');
+    
     if (!images || images.length === 0) {
-      console.error('No images provided for carousel');
+      if (carouselContainer) {
+        carouselContainer.style.display = 'none';
+      }
       return;
+    }
+
+    if (carouselContainer) {
+      carouselContainer.style.display = 'flex';
     }
 
     const prevBtn = document.getElementById('carouselPrev');
