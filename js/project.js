@@ -254,6 +254,8 @@ const ImageGalleryApp = {
       modalDescription: document.getElementById("imgGalleryModalDescription"),
       carouselImage: document.getElementById("imgGalleryCarouselImage"),
       carouselDots: document.getElementById("imgGalleryCarouselDots"),
+      pdfContainer: document.getElementById("imgGalleryPdfContainer"),
+      pdfViewer: document.getElementById("imgGalleryPdfViewer"),
       closeBtn: document.querySelector(".img-gallery-close")
     };
     
@@ -353,13 +355,22 @@ const ImageGalleryApp = {
       }
       
       div.addEventListener("click", () => this.openModal(index));
-      
-      // Create image element
-      const img = document.createElement("img");
-      img.src = item.images[0];
-      img.alt = item.title;
-      img.loading = "lazy";
-      
+
+      // Create image or placeholder
+      if (item.images && item.images.length > 0) {
+        const img = document.createElement("img");
+        img.src = item.images[0];
+        img.alt = item.title;
+        img.loading = "lazy";
+        div.appendChild(img);
+      } else {
+        const placeholder = document.createElement("div");
+        placeholder.className = "img-gallery-placeholder";
+        const icon = item.pdfUrl ? "bi-file-earmark-pdf" : "bi-file-earmark-text";
+        placeholder.innerHTML = `<i class="bi ${icon}"></i><span>Documentation</span>`;
+        div.appendChild(placeholder);
+      }
+
       // Create overlay
       const overlay = document.createElement("div");
       overlay.className = "img-gallery-overlay";
@@ -394,9 +405,8 @@ const ImageGalleryApp = {
         overlay.appendChild(category);
       }
       
-      div.appendChild(img);
       div.appendChild(overlay);
-      
+
       this.elements.gallery.appendChild(div);
     });
   },
@@ -498,16 +508,37 @@ const ImageGalleryApp = {
   // Setup image carousel in modal
   setupCarousel(images) {
     const carouselContainer = document.querySelector('.img-gallery-carousel-container');
-    
+    const item = this.galleryData[this.currentGalleryIndex];
+
+    // Reset PDF viewer state
+    if (this.elements.pdfContainer) {
+      this.elements.pdfContainer.style.display = 'none';
+    }
+    if (this.elements.pdfViewer) {
+      this.elements.pdfViewer.src = '';
+    }
+
     if (!images || images.length === 0) {
       if (carouselContainer) {
         carouselContainer.style.display = 'none';
       }
+      if (this.elements.carouselDots) {
+        this.elements.carouselDots.style.display = 'none';
+      }
+      // Show PDF viewer if available
+      if (item && item.pdfUrl && this.elements.pdfContainer && this.elements.pdfViewer) {
+        this.elements.pdfViewer.src = item.pdfUrl;
+        this.elements.pdfContainer.style.display = 'flex';
+      }
       return;
     }
 
+    // Restore carousel and dots
     if (carouselContainer) {
       carouselContainer.style.display = 'flex';
+    }
+    if (this.elements.carouselDots) {
+      this.elements.carouselDots.style.display = 'flex';
     }
 
     const prevBtn = document.getElementById('carouselPrev');
