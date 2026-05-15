@@ -72,7 +72,7 @@ const ImageGalleryApp = {
         "img/projects/luna/Expenses Tracker.png",
         "img/projects/luna/Screenshot 2025-08-24 203759.png",
       ],
-      technologies: ["Figma", "Adobe XD", "Prototyping"],
+      technologies: ["Figma", "Adobe Illustrator", "Prototyping"],
       year: "2024",
       githubUrl: null, // Design project, no GitHub
       liveUrl: null,
@@ -91,7 +91,7 @@ const ImageGalleryApp = {
         "img/projects/mellowdy/Web 1366 – 3.png",
         "img/projects/mellowdy/Web 1366 – 4.png"
       ],
-      technologies: ["Figma", "React", "JavaScript", "Testing"],
+      technologies: ["Figma", "C#.net", "SQL", "Testing"],
       year: "2024",
       githubUrl: "https://github.com/madrian31/Mellowdy.git",
       liveUrl: null
