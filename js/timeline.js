@@ -6,7 +6,7 @@ const timelineData = [
     title: "Junior Programmer",
     company: "BPO Company",
     description: "Kickstarted my programming career, focusing on web apps and software solutions using modern technologies.",
-    skills: ["Web Development", "C#.net", "Software Testing", "UI/UX", "Problem Solving", "Collaboration"]
+    skills: ["Web Development", "C#.net", "Software Testing", "SQL", "UI/UX", "Problem Solving", "Collaboration"]
   },
   {
     date: "Aug 2024 - Dec 2024",
