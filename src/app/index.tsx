@@ -179,7 +179,6 @@ export default function HomeScreen() {
     setEditingJournal(null);
   };
 
-  // ✅ FIX: Object-style push — no manual URL string encoding, works on all devices
   const goToNoteList = (item: Journal) => {
     router.push({
       pathname: "/note-list",
